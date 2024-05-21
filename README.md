@@ -31,3 +31,7 @@ We primarily use VSCODE for development:
 To check formatting: npm run prettier:check
 To format code: npm run prettier:write
 To lint code: npm run lint
+
+Our goal is to be similiar to the AirBNB style guide:
+
+https://airbnb.io/javascript/react/
