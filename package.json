@@ -7,7 +7,8 @@
     "start": "cd packages/express-backend && npm run dev & cd packages/react-frontend && vite",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier:check": "prettier --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "prettier:write": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
+    "prettier:write": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --quiet"
   },
   "author": "",
   "license": "ISC",
