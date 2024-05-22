@@ -1,10 +1,24 @@
 import mongoose from 'mongoose';
 
 const TaskSchema = new mongoose.Schema({
-    description: {
+    name: {
         type: String,
         required: true,
         trim: true,
+    },
+    description: {
+        type: String,
+        required: true,
+        
+    },
+    duedate: {
+        type: String,
+        required: true,
+    },
+    priority: {
+        type: Number,
+        required: true,
+        default: 0, 
     },
     completed: {
         type: Boolean,
