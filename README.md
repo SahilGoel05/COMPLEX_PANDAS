@@ -7,12 +7,11 @@ Once you've cloned this workspace, run `yarn install` to install necessary depen
 From there, to run in development mode in the browser, run `npm start` in the parent `COMPLEX_PANDAS` directory.
 
 
+#### Prettier Configuration
 
 Contributing
 
  [Prettier](https://prettier.io/) for code formatting and [ESLint](https://eslint.org/) for linting. Please ensure your code adheres to these standards before submitting a pull request.
-
-#### Prettier Configuration
 
 Our Prettier configuration is defined in the `prettier.config.js` file located in the root of the project. Here's a sample configuration:
 
