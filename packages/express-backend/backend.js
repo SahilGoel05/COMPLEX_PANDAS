@@ -83,14 +83,29 @@ app.get('/dev/users', async (req, res) => {
     }
 });
 
+app.delete('/dev/tasks', async (req, res) => {
+    try {
+        await Task.deleteMany({});
+        res.send({ message: 'All tasks have been deleted' });
+    } catch (error) {
+        res.status(500).send();
+    }
+});
+
+app.get('/dev/tasks', async (req, res) => {
+    try {
+        const tasks = await Task.find();
+        res.json(tasks);
+    } catch (error) {
+        res.status(500).send('Error fetching tasks');
+    }
+});
+
 const authenticateToken = (req, res, next) => {
-    console.log('in here')
     const token = req.headers.authorization?.split(' ')[1];
-    console.log('token: ' + token)
     if (!token) return res.sendStatus(401);
 
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-        console.log("Decoded JWT:", decoded); // Add this line
         if (err) return res.sendStatus(403);
         req.user = decoded;
         next();
@@ -98,7 +113,6 @@ const authenticateToken = (req, res, next) => {
 };
 
 app.get('/tasks', authenticateToken, async (req, res) => {
-    console.log('made it?')
     try {
         const userId = req.user.userId; // Extract user ID from token
         const tasks = await Task.find({ creator: userId });
