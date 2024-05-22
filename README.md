@@ -3,7 +3,10 @@
 #### Set-up instructions
 
 Once you've cloned this workspace, run `yarn install` to install necessary dependencies.
+
 From there, to run in development mode in the browser, run `npm start` in the parent `COMPLEX_PANDAS` directory.
+
+
 
 Contributing
 
