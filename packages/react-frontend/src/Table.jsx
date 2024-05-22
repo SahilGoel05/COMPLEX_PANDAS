@@ -1,5 +1,7 @@
 // src/Table.jsx
-function Table({ tasks, toggleTask }) {
+import React from "react";
+
+function Table({ tasks, toggleTask, newTask, handleNewTaskChange, addTask }) {
     function handleToggleTask(id, completed) {
         toggleTask(id, !completed);
     }
@@ -25,6 +27,20 @@ function Table({ tasks, toggleTask }) {
                     </td>
                 </tr>
             ))}
+            <tr>
+                <td>
+                    <input
+                        type="text"
+                        value={newTask.description}
+                        onChange={handleNewTaskChange}
+                        placeholder="Add a new task..."
+                        className="underline-input"
+                    />
+                </td>
+                <td>
+                    <button onClick={addTask}>Confirm</button>
+                </td>
+            </tr>
             </tbody>
         </table>
     );

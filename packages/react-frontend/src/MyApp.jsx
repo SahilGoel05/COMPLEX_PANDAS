@@ -2,18 +2,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Table from "./Table";
-import Form from "./Form";
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 function MyApp() {
     const [tasks, setTasks] = useState([]);
-    const navigate = useNavigate();  // Hook to navigate programmatically
+    const [newTask, setNewTask] = useState({ description: "", completed: false });
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // Check if there's a token in localStorage
         const token = localStorage.getItem('token');
         if (!token) {
-            navigate('/signin');  // No token found, redirect to sign-in page
+            navigate('/signin');
         } else {
             fetchTasks();
         }
@@ -30,12 +29,13 @@ function MyApp() {
         }
     }
 
-    async function addTask(task) {
+    async function addTask() {
         try {
-            const response = await axios.post("http://localhost:8000/tasks", task, {
+            const response = await axios.post("http://localhost:8000/tasks", newTask, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}`, "Content-Type": "application/json" }
             });
             setTasks([...tasks, response.data]);
+            setNewTask({ description: "", completed: false });
         } catch (error) {
             console.error('Error adding task:', error);
         }
@@ -53,9 +53,13 @@ function MyApp() {
         }
     }
 
+    function handleNewTaskChange(event) {
+        setNewTask({ ...newTask, description: event.target.value });
+    }
+
     function signOut() {
-        localStorage.removeItem('token');  // Clear the token from localStorage
-        navigate('/signin');  // Navigate to the sign-in page
+        localStorage.removeItem('token');
+        navigate('/signin');
     }
 
     return (
@@ -64,8 +68,7 @@ function MyApp() {
                 <h1>Tasks</h1>
                 <button onClick={signOut} className="button sign-out">Sign Out</button>
             </div>
-            <Form handleSubmit={addTask} />
-            <Table tasks={tasks} toggleTask={toggleTask} />
+            <Table tasks={tasks} toggleTask={toggleTask} newTask={newTask} handleNewTaskChange={handleNewTaskChange} addTask={addTask} />
         </div>
     );
 }
