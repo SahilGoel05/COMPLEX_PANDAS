@@ -196,8 +196,7 @@ app.listen(port, () => {
         `Example app listening at http://localhost:${port}`
     );
 });
-<<<<<<< HEAD
-=======
+
 
 //adding category requests here
 app.get('/dev/categories', async (req, res) => {
@@ -224,4 +223,18 @@ app.post('/categories', authenticateToken, async (req, res) => {
         res.status(400).send(error);
     }
 });
->>>>>>> 360fefa (get and post for categories in progress)
+
+app.delete('/categories/:id', authenticateToken, async (req, res) => {
+    try {
+        const category = await Category.findOneAndDelete({ _id: req.params.id, creator: req.user.userId });
+
+        if (!category) {
+            return res.status(404).send();
+        }
+
+        res.send(category);
+    } catch (error) {
+        res.status(500).send();
+    }
+});
+
