@@ -1,6 +1,8 @@
+// src/components/SignUp.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import "../styles/main.css"; // Assuming this file includes styles for sign-up
 
 function SignUp() {
     const [formData, setFormData] = useState({

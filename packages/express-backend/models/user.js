@@ -1,14 +1,5 @@
-// user-auth.js
+// models/user.js
 import mongoose from 'mongoose';
-
-mongoose.set("debug", true);
-
-mongoose
-    .connect("mongodb://localhost:27017/users", {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
-    .catch((error) => console.log(error));
 
 const userAuthSchema = new mongoose.Schema({
     username: {

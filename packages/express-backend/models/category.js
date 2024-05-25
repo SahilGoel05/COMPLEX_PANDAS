@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+// models/category.js
+import mongoose from 'mongoose';
 
-const CategorySchema = new mongoose.Schema(
-  {
+const CategorySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -10,12 +10,9 @@ const CategorySchema = new mongoose.Schema(
     creator: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'UserAuth' // Assuming you have a User model
+        ref: 'UserAuth'
     }
-    
-  },
- 
-{ timestamps: true });
+}, { timestamps: true });
 
 const Category = mongoose.model("Category", CategorySchema);
 

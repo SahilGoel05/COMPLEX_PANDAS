@@ -1,6 +1,6 @@
-// src/PopupForm.jsx
+// src/components/PopupForm.jsx
 import React from "react";
-import "./PopupForm.css";
+import "../styles/PopupForm.css";
 
 function PopupForm({ newTask, handleNewTaskChange, addTask, setShowPopup }) {
     return (

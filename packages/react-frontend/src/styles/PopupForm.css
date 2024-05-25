@@ -1,0 +1,62 @@
+/* src/PopupForm.css */
+.popup-form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.popup-form h2 {
+    margin-bottom: 20px;
+    color: #ff69b4;
+}
+
+.popup-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.popup-form button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-form .confirm-button {
+    background-color: #ff69b4;
+    color: white;
+}
+
+.popup-form .cancel-button {
+    background-color: #ddd;
+    color: black;
+}
+
+.popup-form .confirm-button:hover {
+    background-color: #ff85c1;
+}
+
+.popup-form .cancel-button:hover {
+    background-color: #ccc;
+}

@@ -1,3 +1,4 @@
+// models/task.js
 import mongoose from 'mongoose';
 
 const TaskSchema = new mongoose.Schema({
@@ -17,16 +18,21 @@ const TaskSchema = new mongoose.Schema({
     priority: {
         type: Number,
         required: true,
-        default: 0, 
+        default: 0,
     },
     completed: {
         type: Boolean,
         default: false,
     },
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true
+    },
     creator: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'UserAuth' // Assuming you have a User model
+        ref: 'UserAuth'
     }
 }, { timestamps: true });
 
