@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Table from "./Table";
+import PopupForm from "./PopupForm";
 import { useNavigate } from 'react-router-dom';
 
 function MyApp() {
     const [tasks, setTasks] = useState([]);
-    const [newTask, setNewTask] = useState({ description: "", completed: false });
+    const [newTask, setNewTask] = useState({ name: "", description: "", duedate: "", priority: 0, completed: false });
+    const [showPopup, setShowPopup] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -35,9 +37,21 @@ function MyApp() {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}`, "Content-Type": "application/json" }
             });
             setTasks([...tasks, response.data]);
-            setNewTask({ description: "", completed: false });
+            setNewTask({ name: "", description: "", duedate: "", priority: 0, completed: false });
+            setShowPopup(false);  // Hide the popup after adding the task
         } catch (error) {
             console.error('Error adding task:', error);
+        }
+    }
+
+    async function deleteTask(id) {
+        try {
+            await axios.delete(`http://localhost:8000/tasks/${id}`, {
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            });
+            setTasks(tasks.filter(task => task._id !== id));
+        } catch (error) {
+            console.error('Error deleting task:', error);
         }
     }
 
@@ -54,7 +68,8 @@ function MyApp() {
     }
 
     function handleNewTaskChange(event) {
-        setNewTask({ ...newTask, description: event.target.value });
+        const { name, value } = event.target;
+        setNewTask({ ...newTask, [name]: value });
     }
 
     function signOut() {
@@ -68,7 +83,16 @@ function MyApp() {
                 <h1>Tasks</h1>
                 <button onClick={signOut} className="button sign-out">Sign Out</button>
             </div>
-            <Table tasks={tasks} toggleTask={toggleTask} newTask={newTask} handleNewTaskChange={handleNewTaskChange} addTask={addTask} />
+            <button onClick={() => setShowPopup(true)} className="button add-task">+</button>
+            {showPopup && (
+                <PopupForm
+                    newTask={newTask}
+                    handleNewTaskChange={handleNewTaskChange}
+                    addTask={addTask}
+                    setShowPopup={setShowPopup}
+                />
+            )}
+            <Table tasks={tasks} toggleTask={toggleTask} deleteTask={deleteTask} />
         </div>
     );
 }

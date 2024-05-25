@@ -1,7 +1,7 @@
 // src/Table.jsx
 import React from "react";
 
-function Table({ tasks, toggleTask, newTask, handleNewTaskChange, addTask }) {
+function Table({ tasks, toggleTask, deleteTask }) {
     function handleToggleTask(id, completed) {
         toggleTask(id, !completed);
     }
@@ -13,6 +13,7 @@ function Table({ tasks, toggleTask, newTask, handleNewTaskChange, addTask }) {
                 <th>Description</th>
                 <th>Status</th>
                 <th>Toggle</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -25,22 +26,13 @@ function Table({ tasks, toggleTask, newTask, handleNewTaskChange, addTask }) {
                             Toggle Status
                         </button>
                     </td>
+                    <td>
+                        <button onClick={() => deleteTask(task._id)}>
+                            Delete
+                        </button>
+                    </td>
                 </tr>
             ))}
-            <tr>
-                <td>
-                    <input
-                        type="text"
-                        value={newTask.description}
-                        onChange={handleNewTaskChange}
-                        placeholder="Add a new task..."
-                        className="underline-input"
-                    />
-                </td>
-                <td>
-                    <button onClick={addTask}>Confirm</button>
-                </td>
-            </tr>
             </tbody>
         </table>
     );

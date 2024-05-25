@@ -1,3 +1,4 @@
+// backend.js
 import express from "express";
 import cors from "cors";
 import AuthUser from "./user-auth.js";
@@ -7,6 +8,7 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
 dotenv.config();
+
 const app = express();
 const port = 8000;
 
@@ -122,11 +124,21 @@ app.get('/tasks', authenticateToken, async (req, res) => {
     }
 });
 
+
 app.post('/tasks', authenticateToken, async (req, res) => {
-    const { description } = req.body;
+    const { name, description, duedate, priority } = req.body;
     const userId = req.user.userId; // Extract user ID from token
+
+    if (!name || !description || !duedate || priority === undefined) {
+        return res.status(400).send({ error: 'All fields are required.' });
+    }
+
     const task = new Task({
+        name,
         description,
+        duedate,
+        priority,
+        completed: false,
         creator: userId
     });
 
@@ -134,9 +146,11 @@ app.post('/tasks', authenticateToken, async (req, res) => {
         await task.save();
         res.status(201).send(task);
     } catch (error) {
-        res.status(400).send(error);
+        console.error('Error saving task:', error);
+        res.status(500).send(error);
     }
 });
+
 
 app.patch('/tasks/:id', authenticateToken, async (req, res) => {
     const updates = Object.keys(req.body);
@@ -167,7 +181,7 @@ app.delete('/tasks/:id', authenticateToken, async (req, res) => {
         const task = await Task.findOneAndDelete({ _id: req.params.id, creator: req.user.userId });
 
         if (!task) {
-            res.status(404).send();
+            return res.status(404).send();
         }
 
         res.send(task);
