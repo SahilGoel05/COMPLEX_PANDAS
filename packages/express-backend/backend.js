@@ -4,6 +4,7 @@ import cors from "cors";
 import AuthUser from "./user-auth.js";
 import bcrypt from "bcrypt";
 import Task from "./task-schema.js";
+import Category from "./category-schema.js";
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
@@ -195,3 +196,32 @@ app.listen(port, () => {
         `Example app listening at http://localhost:${port}`
     );
 });
+<<<<<<< HEAD
+=======
+
+//adding category requests here
+app.get('/dev/categories', async (req, res) => {
+    try {
+        const categories = await Category.find();
+        res.json(categories);
+    } catch (error) {
+        res.status(500).send('Error fetching categories');
+    }
+});
+
+app.post('/categories', authenticateToken, async (req, res) => {
+    const { name } = req.body;
+    const userId = req.user.userId; // Extract user ID from token
+    const category = new Category({
+        name,
+        creator: userId
+    });
+
+    try {
+        await category.save();
+        res.status(201).send(category);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+>>>>>>> 360fefa (get and post for categories in progress)
