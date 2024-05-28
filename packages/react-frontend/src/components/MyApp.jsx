@@ -70,7 +70,7 @@ function MyApp() {
 
     async function deleteTask(id) {
         try {
-            await axios.delete(`http://localhost:8000/api/tasks/${id}`, {
+            await axios.delete(`http://localhost:8000/tasks/${id}`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setTasks(tasks.filter(task => task._id !== id));
@@ -81,7 +81,7 @@ function MyApp() {
 
     async function toggleTask(id, completed) {
         try {
-            const response = await axios.patch(`http://localhost:8000/api/tasks/${id}`, { completed }, {
+            const response = await axios.patch(`http://localhost:8000/tasks/${id}`, { completed }, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}`, "Content-Type": "application/json" }
             });
             const newTasks = tasks.map(task => task._id === id ? response.data : task);
