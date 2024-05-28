@@ -33,7 +33,7 @@ function MyApp() {
 
     async function fetchCategories() {
         try {
-            const response = await axios.get("http://localhost:8000/api/categories", {
+            const response = await axios.get("http://localhost:8000/categories", {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setCategories(response.data);
@@ -44,7 +44,7 @@ function MyApp() {
 
     async function fetchTasks(categoryId) {
         try {
-            const url = categoryId ? `http://localhost:8000/api/tasks?category=${categoryId}` : `http://localhost:8000/api/tasks`;
+            const url = categoryId ? `http://localhost:8000/tasks?category=${categoryId}` : `http://localhost:8000/tasks`;
             const response = await axios.get(url, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
@@ -56,7 +56,7 @@ function MyApp() {
 
     async function addTask() {
         try {
-            const response = await axios.post("http://localhost:8000/api/tasks",
+            const response = await axios.post("http://localhost:8000/tasks",
                 { ...newTask, category: selectedCategory === "all" ? null : selectedCategory }, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}`, "Content-Type": "application/json" }
                 });

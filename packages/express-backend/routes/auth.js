@@ -7,6 +7,7 @@ import UserAuth from '../models/user.js';
 const router = express.Router();
 
 router.post('/signup', async (req, res) => {
+    console.log('hello')
     const { username, email, password } = req.body;
 
     const existingUser = await UserAuth.findOne({ $or: [{ username }, { email }] });

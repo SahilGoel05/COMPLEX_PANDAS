@@ -20,11 +20,11 @@ function SignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError("");  // Clear previous errors
+        setError("");
         try {
-            const response = await axios.post('http://localhost:8000/signup', formData);
+            const response = await axios.post('http://localhost:8000/auth/signup', formData);
             navigate('/signin'); // Redirect to sign-in on successful signup
-            alert(response.data.message); // Optionally alert the user of successful registration
+            alert(response.data.message);
         } catch (error) {
             const errorMessage = error.response ? error.response.data.error : "An error occurred while signing up.";
             setError(errorMessage);

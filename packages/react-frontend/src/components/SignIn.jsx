@@ -21,7 +21,7 @@ function SignIn() {
         e.preventDefault();
         setError("");  // Clear previous errors
         try {
-            const response = await axios.post('http://localhost:8000/signin', formData);
+            const response = await axios.post('http://localhost:8000/auth/signin', formData);
             localStorage.setItem('token', response.data.token);
             navigate('/');
         } catch (error) {

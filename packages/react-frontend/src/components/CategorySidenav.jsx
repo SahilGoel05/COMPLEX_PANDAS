@@ -12,7 +12,7 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
         const newCategory = prompt('Enter new category name:');
         if (newCategory) {
             try {
-                await axios.post('http://localhost:8000/api/categories', { name: newCategory }, {
+                await axios.post('http://localhost:8000/categories', { name: newCategory }, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 fetchCategories();

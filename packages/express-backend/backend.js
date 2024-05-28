@@ -17,9 +17,9 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
-app.use('/api/tasks', taskRoutes);
-app.use('/api/categories', categoryRoutes);
+app.use('/auth', authRoutes);
+app.use('/tasks', taskRoutes);
+app.use('/categories', categoryRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
