@@ -24,7 +24,9 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
 
     return (
         <div>
+            <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>Categories</h2>
             <div className="sidenav">
+            <h3 style={{ color: '#ff69b4' }}>Categories</h3> {/*Created a categories header that is pink*/}
                 <button
                     className={`category-button ${selectedCategory === 'all' ? 'selected' : ''}`}
                     onClick={() => handleCategoryClick('all')}
