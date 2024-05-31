@@ -32,9 +32,11 @@ function SignUp() {
     };
 
     return (
-        <div className="signin-container">
+        <div className="signin-container1">
+             <div><h1 style={{marginTop: "120px", marginLeft: "130px", fontSize:"40px", color:"white"}}> Panda Todo</h1></div>
+             <div className="signin-container">
             <form className="signin-form" onSubmit={handleSubmit}>
-                <h2>Sign Up</h2>
+                <h2 style={{fontSize :"31.05px", fontWeight: "bold", color: "black"}}>Sign Up</h2>
                 {error && <div className="error-message">{error}</div>}
                 <div>
                     <label htmlFor="username">Username:</label>
@@ -58,7 +60,7 @@ function SignUp() {
                         required
                     />
                 </div>
-                <div>
+                <div style={{marginTop: "12px"}}>
                     <label htmlFor="password">Password:</label>
                     <input
                         type="password"
@@ -69,11 +71,13 @@ function SignUp() {
                         required
                     />
                 </div>
-                <button type="submit">Sign Up</button>
-                <p>
-                    Already have an account? <Link to="/signin">Sign In</Link>
+                <button style={{marginTop: "22px", width:"400px", backgroundColor: "#F79B9B"}} type="submit">Sign Up</button>
+                <p style={{marginTop: "42px", color:"grey"}}>
+                    Already have an account? <Link to="/signin"> <span style={{color:"#F79B9B", textDecoration:"none"}}>Sign In</span></Link>
                 </p>
             </form>
+            <div><img style={{height: "750px", width: "700px", marginRight: "50px"}} src="../../pictures /picture1.jpeg" alt="background image" /></div>
+        </div>
         </div>
     );
 }

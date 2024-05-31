@@ -24,19 +24,25 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
 
     return (
         <div>
-            <div className="sidenav">
+            <div style={{height:"auto", color: "white",backgroundColor:"#F79B9B"}} className="sidenav">
                 <button
+                    style = {{backgroundColor:"#F8C0C093", color: "white"}}
                     className={`category-button ${selectedCategory === 'all' ? 'selected' : ''}`}
                     onClick={() => handleCategoryClick('all')}
+                  
                 >
                     All Tasks
                 </button>
+
                 {categories.map(category => (
                     <button
+                    
                         key={category._id}
                         className={`category-button ${selectedCategory === category._id ? 'selected' : ''}`}
-                        onClick={() => handleCategoryClick(category._id)}
+                        onClick={() => handleCategoryClick(category._id) }
+                        
                     >
+                        
                         {category.name}
                     </button>
                 ))}

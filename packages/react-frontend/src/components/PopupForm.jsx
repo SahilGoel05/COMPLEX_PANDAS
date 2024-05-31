@@ -5,8 +5,8 @@ import "../styles/PopupForm.css";
 function PopupForm({ newTask, handleNewTaskChange, addTask, setShowPopup }) {
     return (
         <div className="popup-form-overlay">
-            <div className="popup-form">
-                <h2>Add Task</h2>
+            <div style={{backgroundColor:"rgba(255, 239, 239, 0.9)"}} className="popup-form">
+                <h2 style={{color:"black"}}>Add Task</h2>
                 <input
                     type="text"
                     name="name"
