@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Table from "./Table";
+import TaskList from "./TaskList";
 import PopupForm from "./PopupForm";
 import CategorySidenav from "./CategorySidenav";
 import TaskDetailsModal from "./TaskDetailsModal";
@@ -168,7 +168,7 @@ function MyApp() {
                         setShowPopup={setShowPopup}
                     />
                 )}
-                <Table tasks={getFilteredTasks()} toggleTask={toggleTask} deleteTask={deleteTask} onRowClick={handleRowClick} />
+                <TaskList tasks={getFilteredTasks()} toggleTask={toggleTask} deleteTask={deleteTask} onRowClick={handleRowClick} />
             </div>
             {selectedTask && (
                 <TaskDetailsModal task={selectedTask} onClose={closeTaskDetailsModal} updateTask={updateTask} />

@@ -1,5 +1,5 @@
-/* src/styles/TaskDetailsModal.css */
-.task-details-modal-overlay {
+/* src/styles/DeleteConfirmationModal.css */
+.delete-confirmation-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +12,7 @@
     z-index: 1000;
 }
 
-.task-details-modal {
+.delete-confirmation-modal {
     background: white;
     padding: 20px;
     border-radius: 5px;
@@ -21,47 +21,29 @@
     width: 300px;
 }
 
-.task-details-modal h2 {
+.delete-confirmation-modal h2 {
     margin-bottom: 20px;
     font-size: 20px;
     color: #ff69b4;
 }
 
-.task-detail {
-    margin-bottom: 15px;
+.delete-confirmation-buttons {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    margin-top: 20px;
 }
 
-.task-detail input,
-.task-detail textarea,
-.task-detail select {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.edit-button {
-    background: none;
-    border: none;
-    color: #ff69b4;
-    cursor: pointer;
-    margin-left: 10px;
-    font-size: 1em;
-}
-
-.close-button {
+.confirm-button,
+.cancel-button {
     background-color: #ff69b4;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
 }
 
-.close-button:hover {
+.confirm-button:hover,
+.cancel-button:hover {
     background-color: #ff85c1;
 }
