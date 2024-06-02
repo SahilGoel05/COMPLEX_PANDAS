@@ -1,9 +1,9 @@
-// src/components/MyApp.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Table from "./Table";
 import PopupForm from "./PopupForm";
 import CategorySidenav from "./CategorySidenav";
+import TaskDetailsModal from "./TaskDetailsModal";
 import { useNavigate } from 'react-router-dom';
 import '../styles/main.css';
 
@@ -13,6 +13,8 @@ function MyApp() {
     const [selectedCategory, setSelectedCategory] = useState("all");
     const [newTask, setNewTask] = useState({ name: "", description: "", duedate: "", priority: 0, completed: false });
     const [showPopup, setShowPopup] = useState(false);
+    const [selectedTask, setSelectedTask] = useState(null);
+    const [sortOption, setSortOption] = useState("dateAdded");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -54,6 +56,19 @@ function MyApp() {
         }
     }
 
+    function getFilteredTasks() {
+        let filteredTasks = [...tasks];
+        if (sortOption === "pending") {
+            filteredTasks = filteredTasks.filter(task => !task.completed);
+        } else if (sortOption === "complete") {
+            filteredTasks = filteredTasks.filter(task => task.completed);
+        } else if (sortOption === "pastDue") {
+            const now = new Date();
+            filteredTasks = filteredTasks.filter(task => new Date(task.duedate) < now && !task.completed);
+        }
+        return filteredTasks;
+    }
+
     async function addTask() {
         try {
             const response = await axios.post("http://localhost:8000/tasks",
@@ -91,9 +106,33 @@ function MyApp() {
         }
     }
 
+    async function updateTask(id, updatedFields) {
+        try {
+            const response = await axios.patch(`http://localhost:8000/tasks/${id}`, updatedFields, {
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}`, "Content-Type": "application/json" }
+            });
+            const newTasks = tasks.map(task => task._id === id ? response.data : task);
+            setTasks(newTasks);
+        } catch (error) {
+            console.error('Error updating task:', error);
+        }
+    }
+
     function handleNewTaskChange(event) {
         const { name, value } = event.target;
         setNewTask({ ...newTask, [name]: value });
+    }
+
+    function handleRowClick(task) {
+        setSelectedTask(task);
+    }
+
+    function closeTaskDetailsModal() {
+        setSelectedTask(null);
+    }
+
+    function handleSortChange(event) {
+        setSortOption(event.target.value);
     }
 
     function signOut() {
@@ -111,7 +150,15 @@ function MyApp() {
                 </div>
                 <div className="category-header-container">
                     <h2 className="category-header">{selectedCategory === "all" ? "All Tasks" : categories.find(cat => cat._id === selectedCategory)?.name || "Category"}</h2>
-                    <button onClick={() => setShowPopup(true)} className="button add-task">+</button>
+                    {selectedCategory !== "all" && (
+                        <button onClick={() => setShowPopup(true)} className="button add-task">+</button>
+                    )}
+                    <select className="sort-dropdown" value={sortOption} onChange={handleSortChange}>
+                        <option value="dateAdded">Date Added</option>
+                        <option value="pending">Pending</option>
+                        <option value="complete">Complete</option>
+                        <option value="pastDue">Past Due</option>
+                    </select>
                 </div>
                 {showPopup && (
                     <PopupForm
@@ -121,8 +168,11 @@ function MyApp() {
                         setShowPopup={setShowPopup}
                     />
                 )}
-                <Table tasks={tasks} toggleTask={toggleTask} deleteTask={deleteTask} />
+                <Table tasks={getFilteredTasks()} toggleTask={toggleTask} deleteTask={deleteTask} onRowClick={handleRowClick} />
             </div>
+            {selectedTask && (
+                <TaskDetailsModal task={selectedTask} onClose={closeTaskDetailsModal} updateTask={updateTask} />
+            )}
         </div>
     );
 }

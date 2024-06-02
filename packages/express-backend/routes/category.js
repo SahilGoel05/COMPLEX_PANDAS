@@ -1,6 +1,7 @@
 // routes/category.js
 import express from 'express';
 import Category from '../models/category.js';
+import Task from '../models/task.js';
 import { authenticateToken } from '../middleware/auth.js';
 
 const router = express.Router();
@@ -35,6 +36,12 @@ router.post('/', authenticateToken, async (req, res) => {
         return res.status(400).send({ error: 'Name is required.' });
     }
 
+    // Check for duplicate category name
+    const existingCategory = await Category.findOne({ name, creator: userId });
+    if (existingCategory) {
+        return res.status(400).send({ error: 'Category name already exists.' });
+    }
+
     const category = new Category({
         name,
         creator: userId
@@ -56,6 +63,9 @@ router.delete('/:id', authenticateToken, async (req, res) => {
         if (!category) {
             return res.status(404).send();
         }
+
+        // Delete all tasks associated with the deleted category
+        await Task.deleteMany({ category: req.params.id });
 
         res.send(category);
     } catch (error) {

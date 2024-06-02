@@ -1,0 +1,85 @@
+/* src/styles/TaskDetailsModal.css */
+.task-details-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.task-details-modal {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 400px;
+    position: relative;
+}
+
+.task-details-modal h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #ff69b4;
+    text-align: center;
+}
+
+.task-details-modal .editable-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-details-modal .editable-field label {
+    margin-right: 10px;
+}
+
+.task-details-modal .editable-field span {
+    flex-grow: 1;
+}
+
+.task-details-modal .editable-field input,
+.task-details-modal .editable-field textarea,
+.task-details-modal .editable-field select {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.task-details-modal .edit-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    color: #ff69b4;
+}
+
+.task-details-modal .save-button,
+.task-details-modal .close-button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.task-details-modal .save-button:hover,
+.task-details-modal .close-button:hover {
+    background-color: #ff85c1;
+}
+
+.task-details-modal .close-button {
+    background-color: #ddd;
+    color: black;
+    margin-left: 10px;
+}

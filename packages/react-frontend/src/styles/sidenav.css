@@ -94,3 +94,23 @@
     display: flex;
     justify-content: center;
 }
+
+.category-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.delete-category-button {
+    background-color: transparent;
+    border: none;
+    color: #ff69b4;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.delete-category-button:hover {
+    color: red;
+}

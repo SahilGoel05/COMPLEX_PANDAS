@@ -31,7 +31,7 @@ router.post('/', authenticateToken, async (req, res) => {
     const task = new Task({
         name,
         description,
-        duedate,
+        duedate: new Date(duedate), // Convert duedate to Date object
         priority,
         completed: false,
         category: category || undefined,
@@ -49,7 +49,7 @@ router.post('/', authenticateToken, async (req, res) => {
 
 router.patch('/:id', authenticateToken, async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUpdates = ['description', 'completed'];
+    const allowedUpdates = ['name', 'description', 'duedate', 'priority', 'completed'];
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
     if (!isValidOperation) {

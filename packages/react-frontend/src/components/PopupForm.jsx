@@ -24,7 +24,7 @@ function PopupForm({ newTask, handleNewTaskChange, addTask, setShowPopup }) {
                     className="underline-input"
                 />
                 <input
-                    type="text"
+                    type="date"
                     name="duedate"
                     value={newTask.duedate}
                     onChange={handleNewTaskChange}

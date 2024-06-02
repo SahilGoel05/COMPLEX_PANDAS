@@ -1,4 +1,4 @@
-/* src/main.css */
+/* src/styles/main.css */
 
 body {
     font-family: 'Arial', sans-serif;
@@ -77,6 +77,11 @@ th, td {
 th {
     background-color: #ff69b4;
     color: white;
+}
+
+tr:hover {
+    background-color: #f7d7dd;
+    cursor: pointer;
 }
 
 .popup-form-overlay {
@@ -164,4 +169,12 @@ th {
     margin: 0;
 }
 
-
+.sort-dropdown {
+    margin-left: auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+}

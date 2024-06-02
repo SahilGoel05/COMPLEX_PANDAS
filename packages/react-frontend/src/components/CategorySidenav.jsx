@@ -1,24 +1,63 @@
 // src/components/CategorySidenav.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import ConfirmationModal from './ConfirmationModal';
 import '../styles/sidenav.css';
 
 function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fetchCategories }) {
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [categoryToDelete, setCategoryToDelete] = useState(null);
+    const [showAddCategoryPopup, setShowAddCategoryPopup] = useState(false);
+    const [newCategoryName, setNewCategoryName] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
     const handleCategoryClick = (categoryId) => {
         setSelectedCategory(categoryId);
     };
 
-    const handleAddCategory = async () => {
-        const newCategory = prompt('Enter new category name:');
-        if (newCategory) {
+    const handleAddCategory = () => {
+        setShowAddCategoryPopup(true);
+        setErrorMessage('');
+    };
+
+    const confirmAddCategory = async () => {
+        if (newCategoryName) {
             try {
-                await axios.post('http://localhost:8000/categories', { name: newCategory }, {
+                await axios.post('http://localhost:8000/categories', { name: newCategoryName }, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 fetchCategories();
+                setNewCategoryName('');
+                setShowAddCategoryPopup(false);  // Ensure the popup is hidden
             } catch (error) {
-                console.error('Error adding category:', error);
+                if (error.response && error.response.data.error === 'Category name already exists.') {
+                    setErrorMessage('Category name already exists.');
+                } else {
+                    console.error('Error adding category:', error);
+                }
             }
+        } else {
+            setErrorMessage('Category name is required.');
+        }
+    };
+
+    const handleDeleteCategory = (categoryId) => {
+        setCategoryToDelete(categoryId);
+        setShowConfirmation(true);
+    };
+
+    const confirmDeleteCategory = async () => {
+        try {
+            await axios.delete(`http://localhost:8000/categories/${categoryToDelete}`, {
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            });
+            fetchCategories();
+            setSelectedCategory('all'); // Set the selected category to 'All Tasks' after deletion
+        } catch (error) {
+            console.error('Error deleting category:', error);
+        } finally {
+            setShowConfirmation(false);
+            setCategoryToDelete(null);
         }
     };
 
@@ -32,18 +71,49 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
                     All Tasks
                 </button>
                 {categories.map(category => (
-                    <button
-                        key={category._id}
-                        className={`category-button ${selectedCategory === category._id ? 'selected' : ''}`}
-                        onClick={() => handleCategoryClick(category._id)}
-                    >
-                        {category.name}
-                    </button>
+                    <div key={category._id} className="category-item">
+                        <button
+                            className={`category-button ${selectedCategory === category._id ? 'selected' : ''}`}
+                            onClick={() => handleCategoryClick(category._id)}
+                        >
+                            {category.name}
+                        </button>
+                        <button
+                            className="delete-category-button"
+                            onClick={() => handleDeleteCategory(category._id)}
+                        >
+                            x
+                        </button>
+                    </div>
                 ))}
             </div>
             <div className="add-category-container">
                 <button className="add-category-button" onClick={handleAddCategory}>+</button>
             </div>
+            {showConfirmation && (
+                <ConfirmationModal
+                    message="Are you sure you want to delete this category and all its tasks?"
+                    onConfirm={confirmDeleteCategory}
+                    onCancel={() => setShowConfirmation(false)}
+                />
+            )}
+            {showAddCategoryPopup && (
+                <ConfirmationModal
+                    message={
+                        <div>
+                            {errorMessage && <p className="error-message">{errorMessage}</p>}
+                            <input
+                                type="text"
+                                value={newCategoryName}
+                                onChange={(e) => setNewCategoryName(e.target.value)}
+                                placeholder="Enter new category name"
+                            />
+                        </div>
+                    }
+                    onConfirm={confirmAddCategory}
+                    onCancel={() => setShowAddCategoryPopup(false)}
+                />
+            )}
         </div>
     );
 }
