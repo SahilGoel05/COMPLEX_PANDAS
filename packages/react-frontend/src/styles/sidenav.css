@@ -1,5 +1,6 @@
 /* src/sidenav.css */
 
+
 .sidenav {
     display: flex;
     flex-direction: column;
@@ -10,11 +11,14 @@
     top: 50%;
     transform: translateY(-50%);
     left: 0;
-    align-items: center; /* Centers the buttons horizontally */
+    align-items: center;
     background-color: #f7d7dd;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 100px rgba(0, 0, 0, 0.1);
     border-radius: 0 10px 10px 0;
+    max-height: 40vh; /* Set a maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 2px solid white; /* Add a thin white border */
 }
 
 .sidenav .category-button {

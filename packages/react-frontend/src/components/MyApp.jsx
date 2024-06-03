@@ -11,7 +11,7 @@ function MyApp() {
     const [tasks, setTasks] = useState([]);
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("all");
-    const [newTask, setNewTask] = useState({ name: "", description: "", duedate: "", priority: 0, completed: false });
+    const [newTask, setNewTask] = useState({ name: "", description: "", duedate: "", priority: undefined, completed: false });
     const [showPopup, setShowPopup] = useState(false);
     const [selectedTask, setSelectedTask] = useState(null);
     const [sortOption, setSortOption] = useState("dateAdded");
@@ -143,7 +143,11 @@ function MyApp() {
     return (
         <div>
             <div><img style={{height: "200px", width: "200px",marginLeft:"50px"}} src="../../pictures /picture2.jpeg" alt="background image" /></div>
-            <CategorySidenav categories={categories} setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
+            <CategorySidenav
+                categories={categories}
+                setSelectedCategory={setSelectedCategory}
+                selectedCategory={selectedCategory}
+            />
             <div className="tasks-container" style={{ marginLeft: '270px', marginTop:"-170px"}}>
                 <div className="tasks-header">
                     <h1 style={{color:"black", fontSize:"40px", fontWeight:"bolder"}}>Panda Todo</h1>

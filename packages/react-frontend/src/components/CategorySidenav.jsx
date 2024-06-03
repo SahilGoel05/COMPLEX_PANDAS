@@ -1,15 +1,31 @@
 // src/components/CategorySidenav.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ConfirmationModal from './ConfirmationModal';
 import '../styles/sidenav.css';
 
-function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fetchCategories }) {
+function CategorySidenav({ categories, setSelectedCategory, selectedCategory }) {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [categoryToDelete, setCategoryToDelete] = useState(null);
     const [showAddCategoryPopup, setShowAddCategoryPopup] = useState(false);
     const [newCategoryName, setNewCategoryName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [updatedCategories, setUpdatedCategories] = useState(categories);
+
+    useEffect(() => {
+        fetchCategories();
+    }, []);
+
+    const fetchCategories = async () => {
+        try {
+            const response = await axios.get('http://localhost:8000/categories', {
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            });
+            setUpdatedCategories(response.data);
+        } catch (error) {
+            console.error('Error fetching categories:', error);
+        }
+    };
 
     const handleCategoryClick = (categoryId) => {
         setSelectedCategory(categoryId);
@@ -28,7 +44,7 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
                 });
                 fetchCategories();
                 setNewCategoryName('');
-                setShowAddCategoryPopup(false);  // Ensure the popup is hidden
+                setShowAddCategoryPopup(false);
             } catch (error) {
                 if (error.response && error.response.data.error === 'Category name already exists.') {
                     setErrorMessage('Category name already exists.');
@@ -52,7 +68,7 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             fetchCategories();
-            setSelectedCategory('all'); // Set the selected category to 'All Tasks' after deletion
+            setSelectedCategory('all');
         } catch (error) {
             console.error('Error deleting category:', error);
         } finally {
@@ -63,21 +79,16 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
 
     return (
         <div>
-
-            <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>Categories</h2>
             <div className="sidenav">
-            <h3 style={{ color: '#ff69b4' }}>Categories</h3> {/*Created a categories header that is pink*/}
+                <h3 style={{ color: '#ff69b4' }}>Categories</h3>
                 <button
-                    style = {{backgroundColor:"#F8C0C093", color: "white"}}
+                    style={{ backgroundColor: "#F8C0C093", color: "white" }}
                     className={`category-button ${selectedCategory === 'all' ? 'selected' : ''}`}
                     onClick={() => handleCategoryClick('all')}
-                  
                 >
                     All Tasks
                 </button>
-
-                {categories.map(category => (
-
+                {updatedCategories.map(category => (
                     <div key={category._id} className="category-item">
                         <button
                             className={`category-button ${selectedCategory === category._id ? 'selected' : ''}`}
@@ -89,14 +100,13 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
                             className="delete-category-button"
                             onClick={() => handleDeleteCategory(category._id)}
                         >
-                            <span style={{color:"black", textShadow: "2px 2px 2px rgba(0, 0, 0, 0.2)"}}>x</span>
+                            <span style={{ color: "black", textShadow: "2px 2px 2px rgba(0, 0, 0, 0.2)" }}>x</span>
                         </button>
                     </div>
-
                 ))}
             </div>
             <div className="add-category-container">
-                <button style = {{color:"black", fontSize:"25px", backgroundColor:"#F69A9E", marginBottom:"100px", fontWeight:"600"}}className="add-category-button" onClick={handleAddCategory}>+</button>
+                <button style={{ color: "black", fontSize: "25px", backgroundColor: "#F69A9E", marginBottom: "100px", fontWeight: "600" }} className="add-category-button" onClick={handleAddCategory}>+</button>
             </div>
             {showConfirmation && (
                 <ConfirmationModal
@@ -108,13 +118,13 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
             {showAddCategoryPopup && (
                 <ConfirmationModal
                     message={
-                        <div style={{height:"70px", width:"440px"}}>
+                        <div style={{ height: "70px", width: "440px" }}>
                             {errorMessage && <p className="error-message">{errorMessage}</p>}
-                            <input style={{marginBottom: "30px", marginTop:"-20px"}}
-                                type="text"
-                                value={newCategoryName}
-                                onChange={(e) => setNewCategoryName(e.target.value)}
-                                placeholder="Enter new category name"
+                            <input style={{ marginBottom: "30px", marginTop: "-20px" }}
+                                   type="text"
+                                   value={newCategoryName}
+                                   onChange={(e) => setNewCategoryName(e.target.value)}
+                                   placeholder="Enter new category name"
                             />
                         </div>
                     }
