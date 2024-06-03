@@ -33,9 +33,9 @@ function TaskList({ tasks, toggleTask, deleteTask, onRowClick }) {
     };
 
     return (
-        <div className="task-list">
+        <div style={{margin: "5px", borderRadius:"10px"}}className="task-list">
             {tasks.map((task) => (
-                <div key={task._id} className={`task-bubble-container ${task.completed ? 'completed-task' : ''}`}>
+                <div  style={{borderRadius:"10px"}} key={task._id} className={`task-bubble-container ${task.completed ? 'completed-task' : ''}`}>
                     <div className={`task-dot ${task.completed ? 'completed' : ''}`} onClick={() => handleToggleTask(task)}></div>
                     <div className={`task-bubble ${getPriorityClass(task.priority)}`} onClick={() => onRowClick(task)}>
                         <div className="task-bubble-content">

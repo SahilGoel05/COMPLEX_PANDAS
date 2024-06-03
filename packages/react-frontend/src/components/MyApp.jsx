@@ -151,11 +151,11 @@ function MyApp() {
                 </div>
 
                 <div className="category-header-container">
-                    <h2 className="category-header">{selectedCategory === "all" ? "All Tasks" : categories.find(cat => cat._id === selectedCategory)?.name || "Category"}</h2>
+                    <h2 style={{color:"black"}}className="category-header">{selectedCategory === "all" ? "All Tasks" : categories.find(cat => cat._id === selectedCategory)?.name || "Category"}</h2>
                     {selectedCategory !== "all" && (
-                        <button onClick={() => setShowPopup(true)} className="button add-task">+</button>
+                        <button onClick={() => setShowPopup(true)} className="button add-task" style={{color:"black"}}>+</button>
                     )}
-                    <select className="sort-dropdown" value={sortOption} onChange={handleSortChange}>
+                    <select  style={{color:"black", backgroundColor:"#F8C0C0",fontWeight:"600" }}className="sort-dropdown" value={sortOption} onChange={handleSortChange}>
                         <option value="dateAdded">Date Added</option>
                         <option value="pending">Pending</option>
                         <option value="complete">Complete</option>
