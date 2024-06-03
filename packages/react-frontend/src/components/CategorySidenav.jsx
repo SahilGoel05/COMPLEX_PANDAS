@@ -64,6 +64,7 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
     return (
         <div>
             <div style={{height:"auto", color: "white",backgroundColor:"#F79B9B"}} className="sidenav">
+                <h1>Category</h1>
                 <button
                     style = {{backgroundColor:"#F8C0C093", color: "white"}}
                     className={`category-button ${selectedCategory === 'all' ? 'selected' : ''}`}
