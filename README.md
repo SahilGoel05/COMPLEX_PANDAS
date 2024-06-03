@@ -9,14 +9,14 @@ Complex Pandas is the ultimate to-do list app designed to streamline your produc
 https://www.figma.com/proto/x7GG88k6zVWjODIiF4JjYm/TE2?page-id=0%3A1&node-id=108-160&viewport=66%2C20610%2C0.54&t=qt1gB1Y3I2shP7oF-1&scaling=scale-down&starting-point-node-id=108%3A160&show-proto-sidebar=1
 
 
-#### Set-up instructions
+# Set-up instructions
 
 Once you've cloned this workspace, run `yarn install` to install necessary dependencies.
 
 From there, to run in development mode in the browser, run `npm start` in the parent `COMPLEX_PANDAS` directory.
 
 
-#### Prettier Configuration
+# Prettier Configuration
 
 Contributing
 
@@ -49,7 +49,7 @@ Our goal is to be similiar to the AirBNB style guide:
 
 https://airbnb.io/javascript/react/
 
-#### Auth Sequence Diagrams
+# Auth Sequence Diagrams
 
 ![Sign Up Auth Sequence Diagram](https://github.com/SahilGoel05/COMPLEX_PANDAS/assets/65931611/422b4072-13cf-407e-8815-89ee700c951c)
 ![Sign In Auth Sequence Diagram](https://github.com/SahilGoel05/COMPLEX_PANDAS/assets/65931611/b5fe2364-c883-496f-85d3-f72608dcd0f8)
