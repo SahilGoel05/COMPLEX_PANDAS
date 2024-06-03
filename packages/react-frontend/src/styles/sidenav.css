@@ -19,7 +19,7 @@
 
 .sidenav .category-button {
     display: block;
-    background-color: #ff85c1;
+    background-color: #F8C0C0;
     color: white;
     border: none;
     border-radius: 5px;
@@ -31,12 +31,12 @@
 }
 
 .sidenav .category-button:hover {
-    background-color: #ff69b4;
+    background-color: #F8C0C0;
 }
 
 .sidenav .category-button.selected {
     background-color: white;
-    color: #ff69b4;
+    color: #F8C0C0;
 }
 
 .sidenav .category-form {
@@ -54,7 +54,7 @@
 
 .sidenav .category-form button {
     padding: 10px;
-    background-color: #ff69b4;
+    background-color: #F8C0C0;
     color: white;
     border: none;
     border-radius: 5px;
@@ -62,13 +62,13 @@
 }
 
 .sidenav .category-form button:hover {
-    background-color: #ff85c1;
+    background-color: #F8C0C090;
 }
 
 /* Style for the add-category button */
 .add-category-button {
     margin-top: 20px;
-    background-color: #ff69b4;
+    background-color: #F8C0C9;
     color: white;
     border: none;
     border-radius: 5px;
@@ -82,7 +82,7 @@
 }
 
 .add-category-button:hover {
-    background-color: #ff85c1;
+    background-color: #F8C0C090;
 }
 
 .add-category-container {
@@ -93,4 +93,24 @@
     width: 200px;
     display: flex;
     justify-content: center;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.delete-category-button {
+    background-color: transparent;
+    border: none;
+    color: #ff69b4;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.delete-category-button:hover {
+    color: red;
 }
