@@ -22,9 +22,10 @@
 }
 
 .delete-confirmation-modal h2 {
-    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-bottom: 35px;
     font-size: 20px;
-    color: #ff69b4;
+    color: #F8C0C9;
 }
 
 .delete-confirmation-buttons {
@@ -35,7 +36,7 @@
 
 .confirm-button,
 .cancel-button {
-    background-color: #ff69b4;
+    background-color: #F8C0C0;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -45,5 +46,5 @@
 
 .confirm-button:hover,
 .cancel-button:hover {
-    background-color: #ff85c1;
+    background-color: #F8C0C0;
 }

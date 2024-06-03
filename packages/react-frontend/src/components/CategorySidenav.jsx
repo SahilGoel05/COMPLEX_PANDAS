@@ -86,14 +86,14 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
                             className="delete-category-button"
                             onClick={() => handleDeleteCategory(category._id)}
                         >
-                            x
+                            <span style={{color:"black", textShadow: "2px 2px 2px rgba(0, 0, 0, 0.2)"}}>x</span>
                         </button>
                     </div>
 
                 ))}
             </div>
             <div className="add-category-container">
-                <button className="add-category-button" onClick={handleAddCategory}>+</button>
+                <button style = {{color:"black", fontSize:"25px", backgroundColor:"#F69A9E", marginBottom:"100px", fontWeight:"600"}}className="add-category-button" onClick={handleAddCategory}>+</button>
             </div>
             {showConfirmation && (
                 <ConfirmationModal
@@ -105,9 +105,9 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory, fe
             {showAddCategoryPopup && (
                 <ConfirmationModal
                     message={
-                        <div>
+                        <div style={{height:"70px", width:"440px"}}>
                             {errorMessage && <p className="error-message">{errorMessage}</p>}
-                            <input
+                            <input style={{marginBottom: "30px", marginTop:"-20px"}}
                                 type="text"
                                 value={newCategoryName}
                                 onChange={(e) => setNewCategoryName(e.target.value)}
