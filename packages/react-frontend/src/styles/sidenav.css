@@ -19,7 +19,7 @@
 
 .sidenav .category-button {
     display: block;
-    background-color: #ff85c1;
+    background-color: #F8C0C0;
     color: white;
     border: none;
     border-radius: 5px;
@@ -31,12 +31,12 @@
 }
 
 .sidenav .category-button:hover {
-    background-color: #ff69b4;
+    background-color: #F8C0C0;
 }
 
 .sidenav .category-button.selected {
     background-color: white;
-    color: #ff69b4;
+    color: #F8C0C0;
 }
 
 .sidenav .category-form {
@@ -54,7 +54,7 @@
 
 .sidenav .category-form button {
     padding: 10px;
-    background-color: #ff69b4;
+    background-color: #F8C0C0;
     color: white;
     border: none;
     border-radius: 5px;
@@ -62,13 +62,13 @@
 }
 
 .sidenav .category-form button:hover {
-    background-color: #ff85c1;
+    background-color: #F8C0C090;
 }
 
 /* Style for the add-category button */
 .add-category-button {
     margin-top: 20px;
-    background-color: #ff69b4;
+    background-color: #F8C0C9;
     color: white;
     border: none;
     border-radius: 5px;
@@ -82,7 +82,7 @@
 }
 
 .add-category-button:hover {
-    background-color: #ff85c1;
+    background-color: #F8C0C090;
 }
 
 .add-category-container {

@@ -2,18 +2,18 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f7f3f7;
+    background-color: #F8C0C0;
     color: #333;
     margin: 0;
     padding: 0;
 }
 
 h1, h2 {
-    color: #ff69b4;
+    color: #F8C0C0;
 }
 
 button {
-    background-color: #ff69b4;
+    background-color: #F8C0C0;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -22,7 +22,7 @@ button {
 }
 
 button:hover {
-    background-color: #ff85c1;
+    background-color: #F8C0C093;
 }
 
 input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="date"] {
@@ -75,7 +75,7 @@ th, td {
 }
 
 th {
-    background-color: #ff69b4;
+    background-color: #F8C0C0;
     color: white;
 }
 
@@ -132,7 +132,7 @@ tr:hover {
 
 .button {
     padding: 10px 20px;
-    background-color: #ff69b4;
+    background-color: #F8C0C0;
     color: white;
     border: none;
     border-radius: 5px;
@@ -140,7 +140,7 @@ tr:hover {
 }
 
 .button:hover {
-    background-color: #ff85c1;
+    background-color: #F8C0C090;
 }
 
 .button.add-task {
@@ -165,9 +165,24 @@ tr:hover {
 
 .category-header {
     font-size: 24px;
-    color: #ff69b4;
+    color: #F8C0C0;
     margin: 0;
 }
+
+
+/* Styling - Hujoe */
+
+/* Sign In and Sign Out Page */
+
+.signin-container{
+    background-color: #F8C0C0;
+    margin-top: -194px;
+}
+.signin-form{
+    margin-top: 90px;
+    width: 500px;
+    height: 450px;
+    /* height: 600px; */
 
 .sort-dropdown {
     margin-left: auto;
@@ -177,4 +192,5 @@ tr:hover {
     background-color: white;
     color: #333;
     cursor: pointer;
+
 }

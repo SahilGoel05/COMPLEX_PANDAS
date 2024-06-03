@@ -142,12 +142,14 @@ function MyApp() {
 
     return (
         <div>
+            <div><img style={{height: "200px", width: "200px",marginLeft:"50px"}} src="../../pictures /picture2.jpeg" alt="background image" /></div>
             <CategorySidenav categories={categories} setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
-            <div className="tasks-container" style={{ marginLeft: '270px' }}>
+            <div className="tasks-container" style={{ marginLeft: '270px', marginTop:"-170px"}}>
                 <div className="tasks-header">
-                    <h1>Tasks</h1>
-                    <button onClick={signOut} className="button sign-out">Sign Out</button>
+                    <h1 style={{color:"black", fontSize:"40px", fontWeight:"bolder"}}>Panda Todo</h1>
+                    <button style= {{color:"white", fontWeight:"bold", backgroundColor:"grey"}}onClick={signOut} className="button sign-out">Sign Out</button>
                 </div>
+
                 <div className="category-header-container">
                     <h2 className="category-header">{selectedCategory === "all" ? "All Tasks" : categories.find(cat => cat._id === selectedCategory)?.name || "Category"}</h2>
                     {selectedCategory !== "all" && (
@@ -159,6 +161,7 @@ function MyApp() {
                         <option value="complete">Complete</option>
                         <option value="pastDue">Past Due</option>
                     </select>
+
                 </div>
                 {showPopup && (
                     <PopupForm
