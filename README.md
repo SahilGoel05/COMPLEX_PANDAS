@@ -1,5 +1,14 @@
 # Complex_Pandas
 
+# Project Blurb:
+
+Complex Pandas is the ultimate to-do list app designed to streamline your productivity. With Complex Pandas, you can easily create personalized notes, set priorities, and organize your tasks into distinct to-do lists. Whether you're juggling work projects, personal errands, or study schedules, Complex Pandas offers a seamless and intuitive interface to keep you on track and ahead of your goals.
+
+# UI Protoype:
+
+https://www.figma.com/proto/x7GG88k6zVWjODIiF4JjYm/TE2?page-id=0%3A1&node-id=108-160&viewport=66%2C20610%2C0.54&t=qt1gB1Y3I2shP7oF-1&scaling=scale-down&starting-point-node-id=108%3A160&show-proto-sidebar=1
+
+
 #### Set-up instructions
 
 Once you've cloned this workspace, run `yarn install` to install necessary dependencies.
