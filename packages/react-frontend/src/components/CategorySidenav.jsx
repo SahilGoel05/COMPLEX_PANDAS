@@ -82,31 +82,37 @@ function CategorySidenav({ categories, setSelectedCategory, selectedCategory }) 
             <div className="sidenav">
                 <h3 style={{ color: '#ff69b4' }}>Categories</h3>
                 <button
-                    style={{ backgroundColor: "#F8C0C093", color: "white" }}
+                    style={{ backgroundColor: selectedCategory === 'all' ? 'white' : '#F8C0C093', color: selectedCategory === 'all' ? '#F8C0C0' : 'white' }}
                     className={`category-button ${selectedCategory === 'all' ? 'selected' : ''}`}
                     onClick={() => handleCategoryClick('all')}
                 >
                     All Tasks
                 </button>
-                {updatedCategories.map(category => (
-                    <div key={category._id} className="category-item">
-                        <button
-                            className={`category-button ${selectedCategory === category._id ? 'selected' : ''}`}
-                            onClick={() => handleCategoryClick(category._id)}
-                        >
-                            {category.name}
-                        </button>
-                        <button
-                            className="delete-category-button"
-                            onClick={() => handleDeleteCategory(category._id)}
-                        >
-                            <span style={{ color: "black", textShadow: "2px 2px 2px rgba(0, 0, 0, 0.2)" }}>x</span>
-                        </button>
-                    </div>
-                ))}
+                {updatedCategories.length === 0 ? (
+                    <p className="no-categories-message">
+                        No categories yet! Click the + button below to add a new category.
+                    </p>
+                ) : (
+                    updatedCategories.map(category => (
+                        <div key={category._id} className="category-item">
+                            <button
+                                className={`category-button ${selectedCategory === category._id ? 'selected' : ''}`}
+                                onClick={() => handleCategoryClick(category._id)}
+                            >
+                                {category.name}
+                            </button>
+                            <button
+                                className="delete-category-button"
+                                onClick={() => handleDeleteCategory(category._id)}
+                            >
+                                <span style={{ color: "white", textShadow: "1px 1px 1px rgba(0, 0, 0, 0.2)" }}>x</span>
+                            </button>
+                        </div>
+                    ))
+                )}
             </div>
             <div className="add-category-container">
-                <button style={{ color: "black", fontSize: "25px", backgroundColor: "#F69A9E", marginBottom: "100px", fontWeight: "600" }} className="add-category-button" onClick={handleAddCategory}>+</button>
+                <button style={{ color: "white", fontSize: "30px", marginBottom: "100px", fontWeight: "600" }} className="add-category-button" onClick={handleAddCategory}>+</button>
             </div>
             {showConfirmation && (
                 <ConfirmationModal

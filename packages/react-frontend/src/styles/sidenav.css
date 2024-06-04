@@ -1,5 +1,4 @@
-/* src/sidenav.css */
-
+/* src/styles/sidenav.css */
 
 .sidenav {
     display: flex;
@@ -35,7 +34,7 @@
 }
 
 .sidenav .category-button:hover {
-    background-color: #F8C0C0;
+    border: 1px solid white; /* Optional: Add a border on hover */
 }
 
 .sidenav .category-button.selected {
@@ -72,21 +71,19 @@
 /* Style for the add-category button */
 .add-category-button {
     margin-top: 20px;
-    background-color: #F8C0C9;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 50%; /* Make the button circular */
+    padding: 2px;
     cursor: pointer;
     text-align: center;
-    width: calc(100% - 40px);
+    width: 40px; /* Adjust width and height to create a circle */
+    height: 40px;
     position: fixed;
-    left: 20px; /* Adjust this value to position the button correctly */
-    bottom: 20px; /* Adjust this value to position the button correctly */
+    left: 80px; /* Adjust this value to position the button correctly */
+    bottom: 40px; /* Adjust this value to position the button correctly */
 }
 
 .add-category-button:hover {
-    background-color: #F8C0C090;
+    border: 2px solid white; /* Optional: Add a border on hover */
 }
 
 .add-category-container {
@@ -108,13 +105,26 @@
 
 .delete-category-button {
     background-color: transparent;
-    border: none;
-    color: #ff69b4;
+    border: 2px solid white;
+    color: white;
     font-size: 16px;
     cursor: pointer;
     padding: 0 5px;
+    border-radius: 50%; /* Make the button circular */
+    width: 25px; /* Adjust width and height to create a circle */
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .delete-category-button:hover {
     color: red;
+}
+
+.no-categories-message {
+    text-align: center;
+    color: black;
+    font-size: 1.2em;
+    margin-top: 20px;
 }

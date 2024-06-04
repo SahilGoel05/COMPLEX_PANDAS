@@ -1,3 +1,4 @@
+// src/components/MyApp.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TaskList from "./TaskList";
@@ -175,7 +176,7 @@ function MyApp() {
                         setShowPopup={setShowPopup}
                     />
                 )}
-                <TaskList tasks={getFilteredTasks()} toggleTask={toggleTask} deleteTask={deleteTask} onRowClick={handleRowClick} />
+                <TaskList tasks={getFilteredTasks()} toggleTask={toggleTask} deleteTask={deleteTask} onRowClick={handleRowClick} selectedCategory={selectedCategory} />
             </div>
             {selectedTask && (
                 <TaskDetailsModal task={selectedTask} onClose={closeTaskDetailsModal} updateTask={updateTask} />
