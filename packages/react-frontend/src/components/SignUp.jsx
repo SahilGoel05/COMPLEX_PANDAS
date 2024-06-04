@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "../styles/main.css"; // Assuming this file includes styles for sign-up
+import backgroundImage from '../styles/pandas.jpg';
+
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -32,54 +34,71 @@ function SignUp() {
     };
 
     return (
-        <div className="signin-container1">
-             <div><h1 style={{marginTop: "120px", marginLeft: "130px", fontSize:"40px", color:"white"}}> Panda Todo</h1></div>
-             <div className="signin-container">
-            <form className="signin-form" onSubmit={handleSubmit}>
-                <h2 style={{fontSize :"31.05px", fontWeight: "bold", color: "black"}}>Sign Up</h2>
-                {error && <div className="error-message">{error}</div>}
-                <div>
-                    <label htmlFor="username">Username:</label>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        value={formData.username}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div style={{marginTop: "12px"}}>
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button style={{marginTop: "22px", width:"400px", backgroundColor: "#F79B9B"}} type="submit">Sign Up</button>
-                <p style={{marginTop: "42px", color:"grey"}}>
-                    Already have an account? <Link to="/signin"> <span style={{color:"#F79B9B", textDecoration:"none"}}>Sign In</span></Link>
-                </p>
-            </form>
-            <div><img style={{height: "750px", width: "700px", marginRight: "50px"}} src="../../pictures /picture1.jpeg" alt="background image" /></div>
-        </div>
-        </div>
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: "100vh",
+                backgroundColor: "#F79B9B",
+                backgroundImage: `url(${backgroundImage})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                padding: "20px",
+                boxSizing: "border-box",
+            }}
+        >
+            <h1 style={{ fontSize: "40px", color: "white", marginBottom: "20px" }}>Panda Todo</h1>
+            
+                <form className="signin-form" onSubmit={handleSubmit}>
+                    <h2 style={{ fontSize: "31.05px", fontWeight: "bold", color: "black", marginBottom: "20px" }}>Sign Up</h2>
+                    {error && <div className="error-message">{error}</div>}
+                    <div>
+                        <label htmlFor="username">Username:</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            value={formData.username}
+                            onChange={handleChange}
+                            required
+                            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                        />
+                    </div>
+                    <div style={{ marginTop: "12px" }}>
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                        />
+                    </div>
+                    <button style={{ marginTop: "22px", width: "100%", backgroundColor: "#F79B9B", padding: "10px", borderRadius: "5px", border: "none", color: "white" }} type="submit">Sign Up</button>
+                    <p style={{ marginTop: "42px", color: "grey" }}>
+                        Already have an account? <Link to="/signin"><span style={{ color: "#F79B9B", textDecoration: "none" }}>Sign In</span></Link>
+                    </p>
+                </form>
+            </div>
+        
     );
 }
+
 
 export default SignUp;
