@@ -8,9 +8,9 @@
     "start": "concurrently \"yarn workspace express-backend run dev\" \"yarn workspace react-frontend run dev\"",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "prettier:check": "prettier --check 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "prettier:write": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --quiet"
+    "prettier:check": "prettier --check 'packages/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "prettier:write": "prettier --write 'packages/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "lint": "eslint 'packages/**/*.{js,jsx,ts,tsx}' --quiet"
   },
   "author": "",
   "license": "ISC",

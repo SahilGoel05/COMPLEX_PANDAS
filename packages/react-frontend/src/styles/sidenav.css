@@ -1,130 +1,130 @@
 /* src/styles/sidenav.css */
 
 .sidenav {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    align-items: center;
-    background-color: #f7d7dd;
-    padding: 20px;
-    box-shadow: 2px 0 100px rgba(0, 0, 0, 0.1);
-    border-radius: 0 10px 10px 0;
-    max-height: 40vh; /* Set a maximum height */
-    overflow-y: auto; /* Enable vertical scrolling */
-    border: 2px solid white; /* Add a thin white border */
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  align-items: center;
+  background-color: #f7d7dd;
+  padding: 20px;
+  box-shadow: 2px 0 100px rgba(0, 0, 0, 0.1);
+  border-radius: 0 10px 10px 0;
+  max-height: 40vh; /* Set a maximum height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 2px solid white; /* Add a thin white border */
 }
 
 .sidenav .category-button {
-    display: block;
-    background-color: #F8C0C0;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px 0;
-    cursor: pointer;
-    text-align: center;
-    width: calc(100% - 50px);
+  display: block;
+  background-color: #f8c0c0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  text-align: center;
+  width: calc(100% - 50px);
 }
 
 .sidenav .category-button:hover {
-    border: 1px solid white; /* Optional: Add a border on hover */
+  border: 1px solid white; /* Optional: Add a border on hover */
 }
 
 .sidenav .category-button.selected {
-    background-color: white;
-    color: #F8C0C0;
+  background-color: white;
+  color: #f8c0c0;
 }
 
 .sidenav .category-form {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .sidenav .category-form input {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 .sidenav .category-form button {
-    padding: 10px;
-    background-color: #F8C0C0;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px;
+  background-color: #f8c0c0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .sidenav .category-form button:hover {
-    background-color: #F8C0C090;
+  background-color: #f8c0c090;
 }
 
 /* Style for the add-category button */
 .add-category-button {
-    margin-top: 20px;
-    border-radius: 50%; /* Make the button circular */
-    padding: 2px;
-    cursor: pointer;
-    text-align: center;
-    width: 40px; /* Adjust width and height to create a circle */
-    height: 40px;
-    position: fixed;
-    left: 80px; /* Adjust this value to position the button correctly */
-    bottom: 40px; /* Adjust this value to position the button correctly */
+  margin-top: 20px;
+  border-radius: 50%; /* Make the button circular */
+  padding: 2px;
+  cursor: pointer;
+  text-align: center;
+  width: 40px; /* Adjust width and height to create a circle */
+  height: 40px;
+  position: fixed;
+  left: 80px; /* Adjust this value to position the button correctly */
+  bottom: 40px; /* Adjust this value to position the button correctly */
 }
 
 .add-category-button:hover {
-    border: 2px solid white; /* Optional: Add a border on hover */
+  border: 2px solid white; /* Optional: Add a border on hover */
 }
 
 .add-category-container {
-    position: fixed;
-    left: 0;
-    bottom: 20px;
-    transform: translateX(20px);
-    width: 200px;
-    display: flex;
-    justify-content: center;
+  position: fixed;
+  left: 0;
+  bottom: 20px;
+  transform: translateX(20px);
+  width: 200px;
+  display: flex;
+  justify-content: center;
 }
 
 .category-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .delete-category-button {
-    background-color: transparent;
-    border: 2px solid white;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 0 5px;
-    border-radius: 50%; /* Make the button circular */
-    width: 25px; /* Adjust width and height to create a circle */
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 5px;
+  border-radius: 50%; /* Make the button circular */
+  width: 25px; /* Adjust width and height to create a circle */
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .delete-category-button:hover {
-    color: red;
+  color: red;
 }
 
 .no-categories-message {
-    text-align: center;
-    color: black;
-    font-size: 1.2em;
-    margin-top: 20px;
+  text-align: center;
+  color: black;
+  font-size: 1.2em;
+  margin-top: 20px;
 }
