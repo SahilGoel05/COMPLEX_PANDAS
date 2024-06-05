@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"yarn workspace express-backend run dev\" \"yarn workspace react-frontend run dev\"",
+    "build": "concurrently \"yarn workspace express-backend run build\" \"yarn workspace react-frontend run build\"",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "prettier:check": "prettier --check 'packages/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",

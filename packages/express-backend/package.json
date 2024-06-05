@@ -8,6 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "export DEBUG='express:router' && npx nodemon backend.js",
+    "build": "echo 'No build necessary for backend'",
     "start": "node backend.js"
   },
   "dependencies": {
