@@ -1,4 +1,4 @@
-// src/components/TaskDetailsModal.jsx
+// src/components/TaskDetailsModal.test.jsx
 import React, { useState } from "react";
 import "../styles/TaskDetailsModal.css";
 
@@ -71,6 +71,7 @@ function TaskDetailsModal({ task, onClose, updateTask }) {
               value={editedDueDate}
               onChange={(e) => setEditedDueDate(e.target.value)}
               onBlur={handleSave}
+              data-testid="due-date-input"
               autoFocus
             />
           ) : (
@@ -87,6 +88,7 @@ function TaskDetailsModal({ task, onClose, updateTask }) {
               value={editedPriority}
               onChange={(e) => setEditedPriority(e.target.value)}
               onBlur={handleSave}
+              data-testid="priority-input"
               autoFocus
             >
               <option value="0">Low</option>

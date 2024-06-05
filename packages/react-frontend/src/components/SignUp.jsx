@@ -26,8 +26,9 @@ function SignUp() {
         "http://localhost:8000/auth/signup",
         formData,
       );
-      navigate("/signin"); // Redirect to sign-in on successful signup
-      alert(response.data.message);
+      //setTimeout(() => {
+        navigate("/signin?signup=success"); // Redirect to sign-in after the tooltip is displayed
+      //}, 3000);
     } catch (error) {
       const errorMessage = error.response
         ? error.response.data.error
@@ -98,6 +99,7 @@ function SignUp() {
               width: "400px",
               backgroundColor: "#F79B9B",
             }}
+            data-testid='signup-button'
             type="submit"
           >
             Sign Up

@@ -1,8 +1,9 @@
 // src/components/SignIn.jsx
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "../styles/main.css"; // Assuming this file includes styles for sign-in
+import Tooltip from './Tooltip';
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -10,7 +11,17 @@ function SignIn() {
     password: "",
   });
   const [error, setError] = useState(""); // State to hold error messages
+  const [tooltipMessage, setTooltipMessage] = useState("");  // State to hold tooltip messages
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('signup') === 'success') {
+      setTooltipMessage("User registered successfully");
+      setTimeout(() => setTooltipMessage(""), 3000); // Tooltip disappears after 3 seconds
+    }
+  }, [location]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,6 +48,7 @@ function SignIn() {
 
   return (
     <div className="signin-container1">
+      {tooltipMessage && <Tooltip message={tooltipMessage} />}
       <div>
         <h1
           style={{
@@ -86,6 +98,7 @@ function SignIn() {
               width: "400px",
               backgroundColor: "#F79B9B",
             }}
+            data-testid="signin-button"
             type="submit"
           >
             Sign In
