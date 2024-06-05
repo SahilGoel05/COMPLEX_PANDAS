@@ -117,7 +117,7 @@ function SignUp() {
         <div>
           <img
             style={{ height: "750px", width: "700px", marginRight: "50px" }}
-            src="../../pictures /picture1.jpeg"
+            src="/pictures/picture1.jpeg"
             alt="background image"
           />
         </div>
