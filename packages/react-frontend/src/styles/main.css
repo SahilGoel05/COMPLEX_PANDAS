@@ -52,13 +52,33 @@ form {
   margin: 10px 0;
 }
 
-.signin-container,
-.signup-container {
+
+.signin-page {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #F79B9B;
+  background-image: url('../styles/pandas.jpg'); /* Adjust the path if needed */
+  background-size: cover;
+  background-position: center;
 }
+
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #F79B9B;
+  background-image: url('../styles/pandas.jpg'); 
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 
 .table-container {
   margin: 20px auto;
