@@ -1,127 +1,103 @@
 // src/components/SignIn.jsx
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "../styles/main.css"; // Assuming this file includes styles for sign-in
-import Tooltip from './Tooltip';
+import backgroundImage from '../styles/pandas.jpg';
 
 function SignIn() {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
-  const [error, setError] = useState(""); // State to hold error messages
-  const [tooltipMessage, setTooltipMessage] = useState("");  // State to hold tooltip messages
-  const navigate = useNavigate();
-  const location = useLocation();
+    const [formData, setFormData] = useState({
+        username: '',
+        password: ''
+    });
+    const [error, setError] = useState("");  // State to hold error messages
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (params.get('signup') === 'success') {
-      setTooltipMessage("User registered successfully");
-      setTimeout(() => setTooltipMessage(""), 3000); // Tooltip disappears after 3 seconds
-    }
-  }, [location]);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError("");  // Clear previous errors
+        try {
+            const response = await axios.post('http://localhost:8000/auth/signin', formData);
+            localStorage.setItem('token', response.data.token);
+            navigate('/');
+        } catch (error) {
+            const errorMessage = error.response ? error.response.data.error : "An error occurred while signing in.";
+            setError(errorMessage);
+        }
+    };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(""); // Clear previous errors
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/auth/signin",
-        formData,
-      );
-      localStorage.setItem("token", response.data.token);
-      navigate("/");
-    } catch (error) {
-      const errorMessage = error.response
-        ? error.response.data.error
-        : "An error occurred while signing in.";
-      setError(errorMessage);
-    }
-  };
-
-  return (
-    <div className="signin-container1">
-      {tooltipMessage && <Tooltip message={tooltipMessage} />}
-      <div>
-        <h1
+    return (
+        <div
           style={{
-            marginTop: "120px",
-            marginLeft: "130px",
-            fontSize: "40px",
-            color: "white",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: "100vh",
+            backgroundColor: "#F79B9B",
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         >
-          {" "}
-          Panda Todo
-        </h1>
-      </div>
-      <div className="signin-container">
-        <form style={{}} className="signin-form" onSubmit={handleSubmit}>
-          <h2
-            style={{ fontSize: "31.05px", fontWeight: "bold", color: "black" }}
-          >
-            Sign In
-          </h2>
-          {error && <div className="error-message">{error}</div>}
-          <div>
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
+          <div style={{ marginTop: "20px", textAlign: "center" }}>
+            <h1 style={{ fontSize: "40px", color: "white" }}>Panda Todo</h1>
           </div>
-          <div style={{ marginTop: "12px" }}>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
+         
+            <form className="signin-form" onSubmit={handleSubmit}>
+              <h2 style={{ fontSize: "31.05px", fontWeight: "bold", color: "black", marginBottom: "20px" }}>Sign In</h2>
+              {error && <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>}
+              <div style={{ marginBottom: "12px" }}>
+                <label htmlFor="username" style={{ display: "block", marginBottom: "5px" }}>Username:</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  required
+                  style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                />
+              </div>
+              <div style={{ marginBottom: "12px" }}>
+                <label htmlFor="password" style={{ display: "block", marginBottom: "5px" }}>Password:</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                />
+              </div>
+              <button
+                type="submit"
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  backgroundColor: "#F79B9B",
+                  border: "none",
+                  color: "white",
+                  cursor: "pointer",
+                  borderRadius: "5px",
+                  marginTop: "22px",
+                }}
+              >
+                Sign In
+              </button>
+              <p style={{ color: "grey", marginTop: "20px", textAlign: "center" }}>
+                Don't have an account? <a href="/signup" style={{ color: "#F79B9B", textDecoration: "none" }}>Sign Up</a>
+              </p>
+            </form>
           </div>
-          <button
-            style={{
-              marginTop: "22px",
-              width: "400px",
-              backgroundColor: "#F79B9B",
-            }}
-            data-testid="signin-button"
-            type="submit"
-          >
-            Sign In
-          </button>
-          <p style={{ marginTop: "42px", color: "grey" }}>
-            Don't have an account?{" "}
-            <Link to="/signup">
-              <span style={{ color: "#F79B9B", textDecoration: "none" }}>
-                Sign Up
-              </span>
-            </Link>
-          </p>
-        </form>
-        <div>
-          <img
-            style={{ height: "750px", width: "700px", marginRight: "50px" }}
-            src="../../pictures /picture1.jpeg"
-            alt="background image"
-          />
-        </div>
-      </div>
-    </div>
-  );
+    
+    );
 }
 
 export default SignIn;
