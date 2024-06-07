@@ -6,22 +6,22 @@ import SignUp from "./components/SignUp";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-    return (
-        <Router>
-            <Routes>
-                <Route path="/signin" element={<SignIn />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route
-                    path="/"
-                    element={
-                        <ProtectedRoute>
-                            <MyApp />
-                        </ProtectedRoute>
-                    }
-                />
-            </Routes>
-        </Router>
-    );
+  return (
+    <Router>
+      <Routes>
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <MyApp />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
