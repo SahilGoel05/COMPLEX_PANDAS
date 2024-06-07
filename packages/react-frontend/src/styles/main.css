@@ -182,8 +182,10 @@ tr:hover {
 .underline-input {
   border: none;
   border-bottom: 1px solid #ddd;
-  padding: 5px;
-  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 85%;
 }
 
 .category-header-container {
