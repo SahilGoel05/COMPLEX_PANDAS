@@ -8,7 +8,7 @@ function TaskDetailsModal({ task, onClose, updateTask }) {
   const [editedDescription, setEditedDescription] = useState(task.description);
   const [isEditingDueDate, setIsEditingDueDate] = useState(false);
   const [editedDueDate, setEditedDueDate] = useState(
-    new Date(task.duedate).toISOString().substr(0, 10)
+    new Date(task.duedate).toISOString().substr(0, 10),
   );
   const [isEditingPriority, setIsEditingPriority] = useState(false);
   const [editedPriority, setEditedPriority] = useState(task.priority);

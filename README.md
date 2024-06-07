@@ -15,7 +15,6 @@ Once you've cloned this workspace, run `npm install --force` to install necessar
 
 From there, to ensure everything is working, run in development mode in the browser with `npm start` in the parent `COMPLEX_PANDAS` directory.
 
-
 # Prettier Configuration
 
 Contributing
@@ -48,6 +47,10 @@ To lint code: npm run lint
 Our goal is to be similiar to the AirBNB style guide:
 
 https://airbnb.io/javascript/react/
+
+## Documentation
+
+- [UML Class Diagram](docs/UML_Class_Diagram.md)
 
 # Auth Sequence Diagrams
 

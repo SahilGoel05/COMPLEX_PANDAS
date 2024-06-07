@@ -52,15 +52,14 @@ form {
   margin: 10px 0;
 }
 
-
 .signin-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #F79B9B;
-  background-image: url('../../public/pictures/pandas.jpg');
+  background-color: #f79b9b;
+  background-image: url("../../public/pictures/pandas.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -71,14 +70,13 @@ form {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #F79B9B;
-  background-image: url('../../public/pictures/pandas.jpg');
+  background-color: #f79b9b;
+  background-image: url("../../public/pictures/pandas.jpg");
   background-size: cover;
   background-position: center;
   padding: 20px;
   box-sizing: border-box;
 }
-
 
 .table-container {
   margin: 20px auto;
