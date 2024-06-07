@@ -1,4 +1,3 @@
-// src/components/TaskDetailsModal.test.jsx
 import React, { useState } from "react";
 import "../styles/TaskDetailsModal.css";
 
@@ -9,7 +8,7 @@ function TaskDetailsModal({ task, onClose, updateTask }) {
   const [editedDescription, setEditedDescription] = useState(task.description);
   const [isEditingDueDate, setIsEditingDueDate] = useState(false);
   const [editedDueDate, setEditedDueDate] = useState(
-    new Date(task.duedate).toISOString().substr(0, 10),
+    new Date(task.duedate).toISOString().substr(0, 10)
   );
   const [isEditingPriority, setIsEditingPriority] = useState(false);
   const [editedPriority, setEditedPriority] = useState(task.priority);
@@ -26,6 +25,19 @@ function TaskDetailsModal({ task, onClose, updateTask }) {
     setIsEditingDescription(false);
     setIsEditingDueDate(false);
     setIsEditingPriority(false);
+  };
+
+  const getPriorityString = (priorityValue) => {
+    switch (parseInt(priorityValue)) {
+      case 0:
+        return "Low";
+      case 1:
+        return "Medium";
+      case 2:
+        return "High";
+      default:
+        return "Unknown";
+    }
   };
 
   return (
@@ -97,7 +109,8 @@ function TaskDetailsModal({ task, onClose, updateTask }) {
             </select>
           ) : (
             <span onClick={() => setIsEditingPriority(true)}>
-              {editedPriority} <button className="edit-button">✎</button>
+              {getPriorityString(editedPriority)}{" "}
+              <button className="edit-button">✎</button>
             </span>
           )}
         </div>
