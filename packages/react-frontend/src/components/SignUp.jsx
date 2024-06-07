@@ -37,7 +37,7 @@ function SignUp() {
     };
 
     return (
-        <div className="signup-page">
+        <div className="signup-page" src={'/pictures/pandas.jpg'}>
             <h1 style={{ fontSize: "40px", color: "white", marginBottom: "20px" }}>Panda Todo</h1>
             <form className="signin-form" onSubmit={handleSubmit}>
                 <h2 style={{ fontSize: "31.05px", fontWeight: "bold", color: "black", marginBottom: "20px" }}>Sign Up</h2>
