@@ -1,9 +1,8 @@
-// src/components/TaskList.jsx
 import React, { useState } from "react";
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 import '../styles/TaskList.css';
 
-function TaskList({ tasks, toggleTask, deleteTask, onRowClick }) {
+function TaskList({ tasks, toggleTask, deleteTask, onRowClick, selectedCategory }) {
   const [taskToDelete, setTaskToDelete] = useState(null);
 
   const handleDeleteClick = (task) => {
@@ -36,7 +35,10 @@ function TaskList({ tasks, toggleTask, deleteTask, onRowClick }) {
       <div style={{ margin: "5px", borderRadius: "10px" }} className="task-list">
         {tasks.length === 0 ? (
             <p style={{ textAlign: "center", color: "black", marginTop: "20px" }}>
-              No tasks yet! Click the + button above to get started with adding tasks.
+              {selectedCategory === "all"
+                  ? "No tasks yet! Navigate to a category to start adding tasks."
+                  : "No tasks yet! Click the + button above to get started with adding tasks."
+              }
             </p>
         ) : (
             tasks.map((task) => (

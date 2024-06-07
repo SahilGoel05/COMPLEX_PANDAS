@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: auto;
-  width: 200px;
+  width: 220px;
   position: fixed;
   z-index: 1;
   top: 50%;
@@ -14,25 +14,25 @@
   box-shadow: 2px 0 100px rgba(0, 0, 0, 0.1);
   border-radius: 0 10px 10px 0;
   max-height: 40vh;
-  overflow-y: auto; 
-  border: 2px solid white; 
+  overflow-y: auto;
+  border: 2px solid white;
 }
-#test
+
 .sidenav .category-button {
   display: block;
   background-color: #f8c0c0;
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 10px;
+  padding: 10px 15px;
   margin: 5px 0;
   cursor: pointer;
   text-align: center;
-  width: calc(100% - 50px);
+  width: calc(100% - 40px);
 }
 
 .sidenav .category-button:hover {
-  border: 1px solid white; 
+  border: 1px solid white;
 }
 
 .sidenav .category-button.selected {
@@ -66,29 +66,27 @@
   background-color: #f8c0c090;
 }
 
-
 .add-category-button {
   margin-top: 20px;
-  border-radius: 50%; 
+  border-radius: 50%;
   padding: 2px;
   cursor: pointer;
   text-align: center;
-  width: 40px; 
+  width: 40px;
   height: 40px;
-  background-color: #ff69b4;
   border: none;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 .add-category-button:hover {
-  border: 2px solid white; 
+  border: 2px solid white;
 }
 
 .add-category-container {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .category-item {
@@ -96,6 +94,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  padding: 5px 0;
 }
 
 .delete-category-button {
@@ -105,8 +104,8 @@
   font-size: 16px;
   cursor: pointer;
   padding: 0 5px;
-  border-radius: 50%; 
-  width: 25px; 
+  border-radius: 50%;
+  width: 25px;
   height: 25px;
   display: flex;
   justify-content: center;

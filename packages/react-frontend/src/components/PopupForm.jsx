@@ -21,7 +21,7 @@ function PopupForm({ newTask, handleNewTaskChange, addTask, setShowPopup }) {
                     name="description"
                     value={newTask.description}
                     onChange={handleNewTaskChange}
-                    placeholder="Add a new task ..."
+                    placeholder="Task Description"
                     className="underline-input"
                 />
                 <input
@@ -40,7 +40,7 @@ function PopupForm({ newTask, handleNewTaskChange, addTask, setShowPopup }) {
                     onChange={handleNewTaskChange}
                     placeholder="Priority"
                     className="underline-input"
-                   
+
                 >
                     <option value="" selected disabled>
                         Priority

@@ -60,7 +60,7 @@ form {
   justify-content: center;
   min-height: 100vh;
   background-color: #F79B9B;
-  background-image: url('../styles/pandas.jpg'); /* Adjust the path if needed */
+  background-image: url('../styles/pandas.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -152,6 +152,12 @@ tr:hover {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 600px) {
+  .tasks-container {
+    margin: 20px 100px;
+  }
+}
+
 .tasks-header {
   display: flex;
   justify-content: space-between;
@@ -212,7 +218,6 @@ tr:hover {
   margin-top: 90px;
   width: 500px;
   height: 450px;
-  /* height: 600px; */
 }
 .sort-dropdown {
   margin-left: auto;

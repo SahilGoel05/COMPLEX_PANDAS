@@ -1,4 +1,3 @@
-// src/components/MyApp.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TaskList from "./TaskList";
@@ -30,7 +29,7 @@ function MyApp() {
       navigate("/signin");
     } else {
       fetchCategories();
-      fetchTasks("all"); // Fetch all tasks by default
+      fetchTasks("all");
     }
   }, [navigate]);
 
@@ -54,8 +53,8 @@ function MyApp() {
   async function fetchTasks(categoryId) {
     try {
       const url = categoryId
-        ? `http://localhost:8000/tasks?category=${categoryId}`
-        : `http://localhost:8000/tasks`;
+          ? `http://localhost:8000/tasks?category=${categoryId}`
+          : `http://localhost:8000/tasks`;
       const response = await axios.get(url, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
@@ -74,7 +73,7 @@ function MyApp() {
     } else if (sortOption === "pastDue") {
       const now = new Date();
       filteredTasks = filteredTasks.filter(
-        (task) => new Date(task.duedate) < now && !task.completed,
+          (task) => new Date(task.duedate) < now && !task.completed,
       );
     }
     return filteredTasks;
@@ -83,17 +82,17 @@ function MyApp() {
   async function addTask() {
     try {
       const response = await axios.post(
-        "http://localhost:8000/tasks",
-        {
-          ...newTask,
-          category: selectedCategory === "all" ? null : selectedCategory,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-            "Content-Type": "application/json",
+          "http://localhost:8000/tasks",
+          {
+            ...newTask,
+            category: selectedCategory === "all" ? null : selectedCategory,
           },
-        },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Content-Type": "application/json",
+            },
+          },
       );
       setTasks([...tasks, response.data]);
       setNewTask({
@@ -103,7 +102,7 @@ function MyApp() {
         priority: 0,
         completed: false,
       });
-      setShowPopup(false); // Hide the popup after adding the task
+      setShowPopup(false);
     } catch (error) {
       console.error("Error adding task:", error);
     }
@@ -123,17 +122,17 @@ function MyApp() {
   async function toggleTask(id, completed) {
     try {
       const response = await axios.patch(
-        `http://localhost:8000/tasks/${id}`,
-        { completed },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-            "Content-Type": "application/json",
+          `http://localhost:8000/tasks/${id}`,
+          { completed },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Content-Type": "application/json",
+            },
           },
-        },
       );
       const newTasks = tasks.map((task) =>
-        task._id === id ? response.data : task,
+          task._id === id ? response.data : task,
       );
       setTasks(newTasks);
     } catch (error) {
@@ -144,17 +143,17 @@ function MyApp() {
   async function updateTask(id, updatedFields) {
     try {
       const response = await axios.patch(
-        `http://localhost:8000/tasks/${id}`,
-        updatedFields,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-            "Content-Type": "application/json",
+          `http://localhost:8000/tasks/${id}`,
+          updatedFields,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Content-Type": "application/json",
+            },
           },
-        },
       );
       const newTasks = tasks.map((task) =>
-        task._id === id ? response.data : task,
+          task._id === id ? response.data : task,
       );
       setTasks(newTasks);
     } catch (error) {
@@ -184,99 +183,111 @@ function MyApp() {
     navigate("/signin");
   }
 
-  return (
-    <div>
-      <div>
-        <img
-          style={{ height: "200px", width: "200px", marginLeft: "50px" }}
-          src="../../pictures /picture2.jpeg"
-          alt="background image"
-        />
-      </div>
-      <CategorySidenav
-        categories={categories}
-        setSelectedCategory={setSelectedCategory}
-        selectedCategory={selectedCategory}
-      />
-      <div
-        className="tasks-container"
-        style={{ marginLeft: "270px", marginTop: "-170px" }}
-      >
-        <div className="tasks-header">
-          <h1
-            style={{ color: "black", fontSize: "40px", fontWeight: "bolder" }}
-          >
-            Panda Todo
-          </h1>
-          <button
-            style={{
-              color: "white",
-              fontWeight: "bold",
-              backgroundColor: "grey",
-            }}
-            onClick={signOut}
-            className="button sign-out"
-          >
-            Sign Out
-          </button>
-        </div>
+  function handleCategoryDeleted(deletedCategoryId) {
+    setTasks((prevTasks) =>
+        prevTasks.filter((task) => task.category !== deletedCategoryId)
+    );
+  }
 
-        <div className="category-header-container">
-          <h2 style={{ color: "black" }} className="category-header">
-            {selectedCategory === "all"
-              ? "All Tasks"
-              : categories.find((cat) => cat._id === selectedCategory)?.name ||
-                "Category"}
-          </h2>
-          {selectedCategory !== "all" && (
-            <button
-              onClick={() => setShowPopup(true)}
-              className="button add-task"
-              style={{ color: "black" }}
-            >
-              +
-            </button>
-          )}
-          <select
-            style={{
-              color: "black",
-              backgroundColor: "#F8C0C0",
-              fontWeight: "600",
-            }}
-            className="sort-dropdown"
-            value={sortOption}
-            onChange={handleSortChange}
-          >
-            <option value="dateAdded">Date Added</option>
-            <option value="pending">Pending</option>
-            <option value="complete">Complete</option>
-            <option value="pastDue">Past Due</option>
-          </select>
-        </div>
-        {showPopup && (
-          <PopupForm
-            newTask={newTask}
-            handleNewTaskChange={handleNewTaskChange}
-            addTask={addTask}
-            setShowPopup={setShowPopup}
+  function handleCategoryAdded(newCategory) {
+    setCategories((prevCategories) => [...prevCategories, newCategory]);
+    setSelectedCategory(newCategory._id);
+  }
+
+  return (
+      <div>
+        <div>
+          <img
+              style={{ height: "200px", width: "200px", marginLeft: "50px" }}
+              src="../../pictures /picture2.jpeg"
+              alt="background image"
           />
+        </div>
+        <CategorySidenav
+            categories={categories}
+            setSelectedCategory={setSelectedCategory}
+            selectedCategory={selectedCategory}
+            onCategoryDeleted={handleCategoryDeleted}
+            onCategoryAdded={handleCategoryAdded}
+        />
+        <div className="tasks-container"
+             style={{ marginLeft: "300px", marginTop: "-170px", marginRight: "20px" }}
+        >
+          <div className="tasks-header">
+            <h1
+                style={{ color: "black", fontSize: "40px", fontWeight: "bolder" }}
+            >
+              Panda Todo
+            </h1>
+            <button
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  backgroundColor: "grey",
+                }}
+                onClick={signOut}
+                className="button sign-out"
+            >
+              Sign Out
+            </button>
+          </div>
+
+          <div className="category-header-container">
+            <h2 style={{ color: "black" }} className="category-header">
+              {selectedCategory === "all"
+                  ? "All Tasks"
+                  : categories.find((cat) => cat._id === selectedCategory)?.name ||
+                  "Category"}
+            </h2>
+            {selectedCategory !== "all" && (
+                <button
+                    onClick={() => setShowPopup(true)}
+                    className="button add-task"
+                    style={{ color: "black" }}
+                >
+                  +
+                </button>
+            )}
+            <select
+                style={{
+                  color: "black",
+                  backgroundColor: "#F8C0C0",
+                  fontWeight: "600",
+                }}
+                className="sort-dropdown"
+                value={sortOption}
+                onChange={handleSortChange}
+            >
+              <option value="dateAdded">Date Added</option>
+              <option value="pending">Pending</option>
+              <option value="complete">Complete</option>
+              <option value="pastDue">Past Due</option>
+            </select>
+          </div>
+          {showPopup && (
+              <PopupForm
+                  newTask={newTask}
+                  handleNewTaskChange={handleNewTaskChange}
+                  addTask={addTask}
+                  setShowPopup={setShowPopup}
+              />
+          )}
+          <TaskList
+              tasks={getFilteredTasks()}
+              toggleTask={toggleTask}
+              deleteTask={deleteTask}
+              onRowClick={handleRowClick}
+              selectedCategory={selectedCategory}
+          />
+        </div>
+        {selectedTask && (
+            <TaskDetailsModal
+                task={selectedTask}
+                onClose={closeTaskDetailsModal}
+                updateTask={updateTask}
+            />
         )}
-        <TaskList
-          tasks={getFilteredTasks()}
-          toggleTask={toggleTask}
-          deleteTask={deleteTask}
-          onRowClick={handleRowClick}
-          selectedCategory={selectedCategory}
-        />
       </div>
-      {selectedTask && (
-        <TaskDetailsModal
-          task={selectedTask}
-          onClose={closeTaskDetailsModal}
-          updateTask={updateTask}
-        />
-      )}
-    </div>
   );
 }
 

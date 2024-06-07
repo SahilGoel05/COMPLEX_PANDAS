@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import "../styles/main.css"; // Assuming this file includes styles for sign-in
+import "../styles/main.css";
 import Tooltip from './Tooltip';
 
 function SignIn() {
@@ -10,8 +10,8 @@ function SignIn() {
     username: "",
     password: "",
   });
-  const [error, setError] = useState(""); // State to hold error messages
-  const [tooltipMessage, setTooltipMessage] = useState("");  // State to hold tooltip messages
+  const [error, setError] = useState("");
+  const [tooltipMessage, setTooltipMessage] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -19,7 +19,7 @@ function SignIn() {
     const params = new URLSearchParams(location.search);
     if (params.get('signup') === 'success') {
       setTooltipMessage("User registered successfully");
-      setTimeout(() => setTooltipMessage(""), 3000); // Tooltip disappears after 3 seconds
+      setTimeout(() => setTooltipMessage(""), 3000);
     }
   }, [location]);
 
@@ -30,7 +30,7 @@ function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous errors
+    setError("");
     try {
       const response = await axios.post(
         "http://localhost:8000/auth/signin",

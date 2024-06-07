@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
-import "../styles/main.css"; // Assuming this file includes styles for sign-up
+import "../styles/main.css";
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -9,7 +9,7 @@ function SignUp() {
         email: '',
         password: ''
     });
-    const [error, setError] = useState("");  // State to hold error messages
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -25,9 +25,9 @@ function SignUp() {
           "http://localhost:8000/auth/signup",
           formData,
         );
-        //setTimeout(() => {
-          navigate("/signin?signup=success"); // Redirect to sign-in after the tooltip is displayed
-        //}, 3000);
+
+        navigate("/signin?signup=success");
+
       } catch (error) {
         const errorMessage = error.response
           ? error.response.data.error

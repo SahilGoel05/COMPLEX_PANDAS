@@ -8,7 +8,7 @@ function Tooltip({ message }) {
     useEffect(() => {
         const timer = setTimeout(() => {
             setVisible(false);
-        }, 3000); // Tooltip disappears after 3 seconds
+        }, 3000);
 
         return () => clearTimeout(timer);
     }, []);

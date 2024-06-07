@@ -6,7 +6,6 @@ import { authenticateToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
-// Fetch all categories (development endpoint)
 router.get("/dev", async (req, res) => {
   try {
     const categories = await Category.find();
@@ -16,7 +15,6 @@ router.get("/dev", async (req, res) => {
   }
 });
 
-// Fetch categories for the authenticated user
 router.get("/", authenticateToken, async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -27,7 +25,6 @@ router.get("/", authenticateToken, async (req, res) => {
   }
 });
 
-// Create a new category
 router.post("/", authenticateToken, async (req, res) => {
   const { name } = req.body;
   const userId = req.user.userId;
@@ -36,7 +33,6 @@ router.post("/", authenticateToken, async (req, res) => {
     return res.status(400).send({ error: "Name is required." });
   }
 
-  // Check for duplicate category name
   const existingCategory = await Category.findOne({ name, creator: userId });
   if (existingCategory) {
     return res.status(400).send({ error: "Category name already exists." });
@@ -55,7 +51,6 @@ router.post("/", authenticateToken, async (req, res) => {
   }
 });
 
-// Delete a category
 router.delete("/:id", authenticateToken, async (req, res) => {
   try {
     const category = await Category.findOneAndDelete({
@@ -67,7 +62,6 @@ router.delete("/:id", authenticateToken, async (req, res) => {
       return res.status(404).send();
     }
 
-    // Delete all tasks associated with the deleted category
     await Task.deleteMany({ category: req.params.id });
 
     res.send(category);

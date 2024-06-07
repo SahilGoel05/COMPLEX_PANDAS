@@ -14,7 +14,6 @@ describe('SignUp Component', () => {
             </MemoryRouter>
         );
 
-        // Check if the sign-up form is rendered
         await findByLabelText(/username/i);
         await findByLabelText(/email/i);
         await findByLabelText(/password/i);
@@ -30,22 +29,18 @@ describe('SignUp Component', () => {
             </MemoryRouter>
         );
 
-        // Simulate user input
         fireEvent.change(await findByLabelText(/username/i), { target: { value: 'testuser' } });
         fireEvent.change(await findByLabelText(/email/i), { target: { value: 'testuser@example.com' } });
         fireEvent.change(await findByLabelText(/password/i), { target: { value: 'password' } });
 
-        // Simulate sign-up button click
         fireEvent.click(await findByTestId('signup-button'));
 
-        // Check if the axios post request is made with correct data
         await waitFor(() => expect(axios.post).toHaveBeenCalledWith('http://localhost:8000/auth/signup', {
             username: 'testuser',
             email: 'testuser@example.com',
             password: 'password'
         }));
 
-        // Check if the user is navigated to the sign-in page
         await findByText('Sign In');
     });
 
@@ -60,15 +55,12 @@ describe('SignUp Component', () => {
             </MemoryRouter>
         );
 
-        // Simulate user input
         fireEvent.change(await findByLabelText(/username/i), { target: { value: 'testuser' } });
         fireEvent.change(await findByLabelText(/email/i), { target: { value: 'testuser@example.com' } });
         fireEvent.change(await findByLabelText(/password/i), { target: { value: 'password' } });
 
-        // Simulate sign-up button click
         fireEvent.click(await findByTestId('signup-button'));
 
-        // Check if the error message is displayed
         await findByText('Username or email already exists');
     });
 
@@ -81,15 +73,12 @@ describe('SignUp Component', () => {
             </MemoryRouter>
         );
 
-        // Simulate user input
         fireEvent.change(await findByLabelText(/username/i), { target: { value: 'testuser' } });
         fireEvent.change(await findByLabelText(/email/i), { target: { value: 'testuser@example.com' } });
         fireEvent.change(await findByLabelText(/password/i), { target: { value: 'password' } });
 
-        // Simulate sign-up button click
         fireEvent.click(await findByTestId('signup-button'));
 
-        // Check if the fallback error message is displayed
         await findByText('An error occurred while signing up.');
     });
 });

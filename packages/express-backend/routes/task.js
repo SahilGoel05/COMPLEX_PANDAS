@@ -31,7 +31,7 @@ router.post("/", authenticateToken, async (req, res) => {
   const task = new Task({
     name,
     description,
-    duedate: new Date(duedate), // Convert duedate to Date object
+    duedate: new Date(duedate),
     priority,
     completed: false,
     category: category || undefined,

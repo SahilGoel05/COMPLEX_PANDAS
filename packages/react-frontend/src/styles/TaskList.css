@@ -4,7 +4,7 @@
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-  background-color: #f7d7dd; /* Pink background */
+  background-color: #f7d7dd;
 }
 
 .task-bubble-container {
@@ -18,26 +18,26 @@
 .task-bubble-container.completed-task .task-bubble-content,
 .task-bubble-container.completed-task .task-bubble-name,
 .task-bubble-container.completed-task .task-bubble-duedate {
-  opacity: 0.5; /* Gray out completed tasks */
+  opacity: 0.5;
 }
 
 .task-dot {
   cursor: pointer;
-  font-size: 1.5em; /* Increase the size of the dot */
+  font-size: 1.5em;
   margin-right: 10px;
-  border: 2px solid black; /* Black outline */
+  border: 2px solid black;
   border-radius: 50%;
   width: 15px;
   height: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black; /* Black outline */
-  background-color: transparent; /* Transparent background */
+  color: black;
+  background-color: transparent;
 }
 
 .task-dot.completed {
-  background-color: white; /* White filled dot for completed tasks */
+  background-color: white;
 }
 
 .task-bubble {
@@ -46,11 +46,11 @@
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: #fff; /* White task bubbles */
+  background-color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;
   flex-grow: 1;
-  position: relative; /* To position the priority line */
+  position: relative;
 }
 
 .task-bubble::before {
@@ -59,28 +59,28 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 5px; /* Adjust the width of the priority line */
+  width: 5px;
   border-radius: 5px 0 0 5px;
 }
 
 .task-bubble.high-priority::before {
-  background-color: red; /* High priority */
+  background-color: red;
 }
 
 .task-bubble.medium-priority::before {
-  background-color: yellow; /* Medium priority */
+  background-color: yellow;
 }
 
 .task-bubble.low-priority::before {
-  background-color: green; /* Low priority */
+  background-color: green;
 }
 
 .task-bubble.no-priority::before {
-  background-color: gray; /* No priority */
+  background-color: gray;
 }
 
 .task-bubble:hover {
-  background-color: #ffebf1; /* Lighter pink on hover */
+  background-color: #ffebf1;
 }
 
 .task-bubble-content {
@@ -88,7 +88,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 10px; /* Adjust padding to account for the priority line */
+  padding-left: 10px;
 }
 
 .task-bubble-name {
@@ -104,14 +104,14 @@
   background: none;
   border: 2px solid white;
   border-radius: 50%;
-  width: 40px; /* Adjust width and height to create a circle */
+  width: 40px;
   height: 40px;
   cursor: pointer;
   padding: 2px;
   font-size: 1.2em;
   margin-left: 10px;
-  color: #ff69b4; /* Pink trash icon */
-  opacity: 1; /* Ensure the delete button is fully opaque */
+  color: #ff69b4;
+  opacity: 1;
 }
 
 .no-tasks-message {

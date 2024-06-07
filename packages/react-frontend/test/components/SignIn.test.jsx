@@ -14,7 +14,6 @@ describe('SignIn Component', () => {
             </MemoryRouter>
         );
 
-        // Check if the sign-in form is rendered
         await findByLabelText(/username/i)
         await findByLabelText(/password/i)
         await findAllByText(/sign in/i)
@@ -29,20 +28,16 @@ describe('SignIn Component', () => {
             </MemoryRouter>
         );
 
-        // Simulate user input
         fireEvent.change(await findByLabelText(/username/i), { target: { value: 'testuser' } });
         fireEvent.change(await findByLabelText(/password/i), { target: { value: 'password' } });
 
-        // Simulate sign-in button click
         fireEvent.click(await findByTestId('signin-button'));
 
-        // Check if the axios post request is made with correct data
         await waitFor(() => expect(axios.post).toHaveBeenCalledWith('http://localhost:8000/auth/signin', {
             username: 'testuser',
             password: 'password'
         }));
 
-        // Check if the token is stored in localStorage
         expect(localStorage.getItem('token')).toBe('testtoken');
     });
 
@@ -57,14 +52,11 @@ describe('SignIn Component', () => {
             </MemoryRouter>
         );
 
-        // Simulate user input
         fireEvent.change(await findByLabelText(/username/i), { target: { value: 'testuser' } });
         fireEvent.change(await findByLabelText(/password/i), { target: { value: 'wrongpassword' } });
 
-        // Simulate sign-in button click
         fireEvent.click(await findByTestId('signin-button'));
 
-        // Check if the error message is displayed
         await findByText('Invalid credentials');
     });
 
@@ -77,14 +69,11 @@ describe('SignIn Component', () => {
             </MemoryRouter>
         );
 
-        // Simulate user input
         fireEvent.change(await findByLabelText(/username/i), { target: { value: 'testuser' } });
         fireEvent.change(await findByLabelText(/password/i), { target: { value: 'password' } });
 
-        // Simulate sign-in button click
         fireEvent.click(await findByTestId('signin-button'));
 
-        // Check if the fallback error message is displayed
         await findByText('An error occurred while signing in.');
     });
 
@@ -95,7 +84,6 @@ describe('SignIn Component', () => {
             </MemoryRouter>
         );
 
-        // Check if the tooltip message is displayed
         await findByText('User registered successfully');
     });
 });

@@ -13,7 +13,7 @@ const TaskSchema = new mongoose.Schema(
       required: true,
     },
     duedate: {
-      type: Date, // Change from String to Date
+      type: Date,
       required: true,
     },
     priority: {

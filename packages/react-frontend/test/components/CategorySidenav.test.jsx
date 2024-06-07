@@ -28,7 +28,6 @@ describe('CategorySidenav Component', () => {
             <CategorySidenav categories={[]} setSelectedCategory={jest.fn()} selectedCategory="all" />
         );
 
-        // Check if the categories are rendered
         await findByText('Categories');
         await findByTestId('all-tasks-button');
     });
@@ -38,7 +37,6 @@ describe('CategorySidenav Component', () => {
             <CategorySidenav categories={[]} setSelectedCategory={jest.fn()} selectedCategory="all" />
         );
 
-        // Check if the fetchCategories function is called
         await waitFor(() => expect(mockFetchCategories).toHaveBeenCalled());
     });
 
@@ -49,12 +47,10 @@ describe('CategorySidenav Component', () => {
             <CategorySidenav categories={[]} setSelectedCategory={jest.fn()} selectedCategory="all" />
         );
 
-        // Simulate adding a new category
         fireEvent.click(await findByTestId('add-category-button'));
         fireEvent.change(await findByPlaceholderText('Enter new category name'), { target: { value: 'New Category' } });
         fireEvent.click(await findByText('Confirm'));
 
-        // Check if the fetchCategories function is called
         await waitFor(() => expect(mockFetchCategories).toHaveBeenCalled());
     });
 
@@ -65,13 +61,10 @@ describe('CategorySidenav Component', () => {
             <CategorySidenav categories={mockCategories} setSelectedCategory={jest.fn()} selectedCategory="all" />
         );
 
-        // Simulate clicking the delete button for the first category
         fireEvent.click(await findByTestId('delete-category-1'));
 
-        // Simulate confirming the deletion
         fireEvent.click(await findByText('Confirm'));
 
-        // Check if the fetchCategories function is called
         await waitFor(() => expect(mockFetchCategories).toHaveBeenCalled());
     });
 
@@ -80,7 +73,6 @@ describe('CategorySidenav Component', () => {
             <CategorySidenav categories={[]} setSelectedCategory={jest.fn()} selectedCategory="all" />
         );
 
-        // Check if the "No categories yet!" message is displayed
         await findByTestId('no-categories-message');
     });
 
@@ -89,10 +81,8 @@ describe('CategorySidenav Component', () => {
             <CategorySidenav categories={mockCategories} setSelectedCategory={mockSetSelectedCategory} selectedCategory="1" />
         );
 
-        // Simulate clicking on a category button
         fireEvent.click(await findByTestId('category-button-2'));
 
-        // Check if the setSelectedCategory function is called with correct arguments
         await waitFor(() => expect(mockSetSelectedCategory).toHaveBeenCalledWith('2'));
     });
 
@@ -105,12 +95,10 @@ describe('CategorySidenav Component', () => {
             <CategorySidenav categories={[]} setSelectedCategory={jest.fn()} selectedCategory="all" />
         );
 
-        // Simulate adding a new category
         fireEvent.click(await findByTestId('add-category-button'));
         fireEvent.change(await findByPlaceholderText('Enter new category name'), { target: { value: 'Work' } });
         fireEvent.click(await findByText('Confirm'));
 
-        // Check if the error message is displayed
         await findByText('Category name already exists.');
     });
 
@@ -121,13 +109,10 @@ describe('CategorySidenav Component', () => {
             <CategorySidenav categories={mockCategories} setSelectedCategory={jest.fn()} selectedCategory="all" />
         );
 
-        // Simulate clicking the delete button for the first category
         fireEvent.click(await findByTestId('delete-category-1'));
 
-        // Simulate confirming the deletion
         fireEvent.click(await findByText('Confirm'));
 
-        // Check if the fetchCategories function is called
         await waitFor(() => expect(mockFetchCategories).toHaveBeenCalled());
     });
 
@@ -136,12 +121,10 @@ describe('CategorySidenav Component', () => {
             <CategorySidenav categories={[]} setSelectedCategory={jest.fn()} selectedCategory="all" />
         );
 
-        // Simulate adding a new category with empty name
         fireEvent.click(await findByTestId('add-category-button'));
         fireEvent.change(await findByPlaceholderText('Enter new category name'), { target: { value: '' } });
         fireEvent.click(await findByText('Confirm'));
 
-        // Check if the error message is displayed
         await findByText('Category name is required.');
     });
 
@@ -150,14 +133,11 @@ describe('CategorySidenav Component', () => {
             <CategorySidenav categories={[]} setSelectedCategory={jest.fn()} selectedCategory="all" />
         );
 
-        // Simulate opening the add category popup
         fireEvent.click(await findByTestId('add-category-button'));
         fireEvent.change(await findByPlaceholderText('Enter new category name'), { target: { value: 'New Category' } });
 
-        // Simulate cancelling the add category popup
         fireEvent.click(await findByText('Cancel'));
 
-        // Check if the add category popup is closed
         await waitFor(() => expect(queryByPlaceholderText('Enter new category name')).toBeNull());
     });
 
@@ -166,13 +146,10 @@ describe('CategorySidenav Component', () => {
             <CategorySidenav categories={mockCategories} setSelectedCategory={jest.fn()} selectedCategory="all" />
         );
 
-        // Simulate clicking the delete button for the first category
         fireEvent.click(await findByTestId('delete-category-1'));
 
-        // Simulate cancelling the deletion
         fireEvent.click(await findByText('Cancel'));
 
-        // Check if the delete confirmation modal is closed
         await waitFor(() => expect(queryByText('Are you sure you want to delete this category and all its tasks?')).toBeNull());
     });
 });
