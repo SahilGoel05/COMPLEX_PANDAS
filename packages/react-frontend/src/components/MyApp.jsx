@@ -199,7 +199,7 @@ function MyApp() {
         <div>
           <img
               style={{ height: "200px", width: "200px", marginLeft: "50px" }}
-              src="../../pictures /picture2.jpeg"
+              src="/pictures/picture2.jpeg"
               alt="background image"
           />
         </div>
