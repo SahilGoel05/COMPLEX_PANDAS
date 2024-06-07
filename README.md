@@ -9,11 +9,11 @@ Complex Pandas is the ultimate to-do list app designed to streamline your produc
 https://www.figma.com/proto/x7GG88k6zVWjODIiF4JjYm/TE2?page-id=0%3A1&node-id=108-160&viewport=66%2C20610%2C0.54&t=qt1gB1Y3I2shP7oF-1&scaling=scale-down&starting-point-node-id=108%3A160&show-proto-sidebar=1
 
 
-# Set-up instructions
+# Set-up dev mode instructions
 
-Once you've cloned this workspace, run `yarn install` to install necessary dependencies.
+Once you've cloned this workspace, run `npm install --force` to install necessary dependencies. (Due to mish mash between trying to use `yarn` and `npm`, along with annoying peer dependencies that we couldn't figure out, this is the best way to go about setting up the repo. Not perfect, but it works :)
 
-From there, to run in development mode in the browser, run `npm start` in the parent `COMPLEX_PANDAS` directory.
+From there, to ensure everything is working, run in development mode in the browser with `npm start` in the parent `COMPLEX_PANDAS` directory.
 
 
 # Prettier Configuration
