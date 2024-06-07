@@ -217,7 +217,7 @@ function MyApp() {
             <h1
                 style={{ color: "black", fontSize: "40px", fontWeight: "bolder" }}
             >
-              Panda Todo
+              Panda TODO
             </h1>
             <button
                 style={{

@@ -50,7 +50,7 @@ function SignIn() {
     <div className="signin-page">
         {tooltipMessage && <Tooltip message={tooltipMessage} />}
       <div style={{ marginTop: "20px", textAlign: "center" }}>
-        <h1 style={{ fontSize: "40px", color: "white" }}>Panda Todo</h1>
+        <h1 style={{ fontSize: "40px", color: "white" }}>Panda TODO</h1>
       </div>
      
         <form className="signin-form" onSubmit={handleSubmit}>

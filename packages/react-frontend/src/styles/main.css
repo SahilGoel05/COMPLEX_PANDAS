@@ -163,6 +163,7 @@ tr:hover {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .button {
@@ -182,7 +183,7 @@ tr:hover {
   font-size: 24px;
   padding: 10px 15px;
   border-radius: 50%;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .underline-input {
@@ -204,6 +205,7 @@ tr:hover {
   font-size: 24px;
   color: #f8c0c0;
   margin: 0;
+  margin-left: 20px;
 }
 
 /* Styling - Hujoe */
@@ -221,6 +223,7 @@ tr:hover {
 }
 .sort-dropdown {
   margin-left: auto;
+  margin-right: 20px;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ddd;

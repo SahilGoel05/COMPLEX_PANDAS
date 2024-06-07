@@ -101,7 +101,7 @@ function CategorySidenav({
   return (
       <div>
         <div className="sidenav" data-testid="sidenav">
-          <h3 style={{ color: "white" }}>Categories</h3>
+          <h2 style={{ color: "white" }}>Categories</h2>
           <button
               style={{
                 backgroundColor: selectedCategory === "all" ? "white" : "#F8C0C093",
