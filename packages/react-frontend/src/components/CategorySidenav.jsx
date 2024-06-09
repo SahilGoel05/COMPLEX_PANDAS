@@ -23,7 +23,7 @@ function CategorySidenav({
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/categories", {
+      const response = await axios.get("https://cp-backend-90532c6e461f.herokuapp.com/categories", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setUpdatedCategories(response.data);
@@ -45,7 +45,7 @@ function CategorySidenav({
     if (newCategoryName) {
       try {
         const response = await axios.post(
-          "http://localhost:8000/categories",
+          "https://cp-backend-90532c6e461f.herokuapp.com/categories",
           { name: newCategoryName },
           {
             headers: {
@@ -82,7 +82,7 @@ function CategorySidenav({
   const confirmDeleteCategory = async () => {
     try {
       await axios.delete(
-        `http://localhost:8000/categories/${categoryToDelete}`,
+        `https://cp-backend-90532c6e461f.herokuapp.com/categories/${categoryToDelete}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         },

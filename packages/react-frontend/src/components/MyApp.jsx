@@ -41,7 +41,7 @@ function MyApp() {
 
   async function fetchCategories() {
     try {
-      const response = await axios.get("http://localhost:8000/categories", {
+      const response = await axios.get("https://cp-backend-90532c6e461f.herokuapp.com/categories", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setCategories(response.data);
@@ -53,8 +53,8 @@ function MyApp() {
   async function fetchTasks(categoryId) {
     try {
       const url = categoryId
-        ? `http://localhost:8000/tasks?category=${categoryId}`
-        : `http://localhost:8000/tasks`;
+        ? `https://cp-backend-90532c6e461f.herokuapp.com/tasks?category=${categoryId}`
+        : `https://cp-backend-90532c6e461f.herokuapp.com/tasks`;
       const response = await axios.get(url, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
@@ -86,7 +86,7 @@ function MyApp() {
   async function addTask() {
     try {
       const response = await axios.post(
-        "http://localhost:8000/tasks",
+        "https://cp-backend-90532c6e461f.herokuapp.com/tasks",
         {
           ...newTask,
           category: selectedCategory === "all" ? null : selectedCategory,
@@ -114,7 +114,7 @@ function MyApp() {
 
   async function deleteTask(id) {
     try {
-      await axios.delete(`http://localhost:8000/tasks/${id}`, {
+      await axios.delete(`https://cp-backend-90532c6e461f.herokuapp.com/tasks/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setTasks(tasks.filter((task) => task._id !== id));
@@ -126,7 +126,7 @@ function MyApp() {
   async function toggleTask(id, completed) {
     try {
       const response = await axios.patch(
-        `http://localhost:8000/tasks/${id}`,
+        `https://cp-backend-90532c6e461f.herokuapp.com/tasks/${id}`,
         { completed },
         {
           headers: {
@@ -147,7 +147,7 @@ function MyApp() {
   async function updateTask(id, updatedFields) {
     try {
       const response = await axios.patch(
-        `http://localhost:8000/tasks/${id}`,
+        `https://cp-backend-90532c6e461f.herokuapp.com/tasks/${id}`,
         updatedFields,
         {
           headers: {

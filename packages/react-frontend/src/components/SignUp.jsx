@@ -22,7 +22,7 @@ function SignUp() {
     setError("");
     try {
       const response = await axios.post(
-        "http://localhost:8000/auth/signup",
+        "https://cp-backend-90532c6e461f.herokuapp.com/auth/signup",
         formData,
       );
 
