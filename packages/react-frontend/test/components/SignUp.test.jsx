@@ -45,7 +45,7 @@ describe("SignUp Component", () => {
 
     await waitFor(() =>
       expect(axios.post).toHaveBeenCalledWith(
-        "http://localhost:8000/auth/signup",
+        "https://cp-backend-90532c6e461f.herokuapp.com/auth/signup",
         {
           username: "testuser",
           email: "testuser@example.com",

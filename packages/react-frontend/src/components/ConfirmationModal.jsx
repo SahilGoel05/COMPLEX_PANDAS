@@ -11,7 +11,6 @@ function ConfirmationModal({ message, onConfirm, onCancel }) {
           <button
             className="confirm-button"
             onClick={() => {
-              console.log("Confirm clicked");
               onConfirm();
             }}
           >
@@ -20,7 +19,6 @@ function ConfirmationModal({ message, onConfirm, onCancel }) {
           <button
             className="cancel-button"
             onClick={() => {
-              console.log("Cancel clicked");
               onCancel();
             }}
           >
