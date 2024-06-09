@@ -1,1 +1,1 @@
-web: node backend.js
+web: cd ./packages/express-backend ; node backend.js
