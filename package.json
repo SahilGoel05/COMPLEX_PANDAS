@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "concurrently \"yarn workspace express-backend run start\" \"yarn workspace react-frontend run start\"",
+    "start": "yarn workspace express-backend run start",
     "build": "concurrently \"yarn workspace express-backend run build\" \"yarn workspace react-frontend run build\"",
     "test": "jest",
     "test:coverage": "jest --coverage",
