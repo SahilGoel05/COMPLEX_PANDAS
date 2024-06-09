@@ -31,7 +31,7 @@ function MyApp() {
       fetchCategories();
       fetchTasks("all");
     }
-  }, [navigate]);
+  }, []);
 
   useEffect(() => {
     if (selectedCategory) {

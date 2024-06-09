@@ -59,7 +59,7 @@ form {
   justify-content: center;
   min-height: 100vh;
   background-color: #f79b9b;
-  background-image: url("../../public/pictures/pandas.jpg");
+  background-image: url("/pictures/pandas.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -71,7 +71,7 @@ form {
   justify-content: center;
   min-height: 100vh;
   background-color: #f79b9b;
-  background-image: url("../../public/pictures/pandas.jpg");
+  background-image: url("/pictures/pandas.jpg");
   background-size: cover;
   background-position: center;
   padding: 20px;
