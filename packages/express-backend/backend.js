@@ -10,7 +10,7 @@ import categoryRoutes from "./routes/category.js";
 dotenv.config();
 
 const app = express();
-const port = 8000;
+const port = 5000;
 
 connectDB();
 
@@ -25,6 +25,6 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
